@@ -1,0 +1,17 @@
+Potential files to add to "sass/components/"
+_dropdown.scss
+_carousel.scss
+_cover.scss
+_composition.scss
+_testimonials.scss
+_bg-videos.scss
+_card.scss
+_popup.scss
+
+NPM commands to get started
+npm init -y
+
+Settings for package.json
+"scripts": {
+    "compile:sass": "sass --watch sass/main.scss:dist/css/style.css"
+  }

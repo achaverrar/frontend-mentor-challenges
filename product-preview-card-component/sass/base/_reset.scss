@@ -1,0 +1,108 @@
+/*
+RESET PRO
+source: https://github.com/eduardofierropro/Reset-CSS
+*/
+
+/* BASIC SETTING FOR */
+/* Font */
+
+html {
+  font-size: 62.5%;
+  box-sizing: border-box;
+  min-height: 100vh;
+}
+
+body {
+  min-height: 100%;
+  /* optional */
+  text-align: left;
+  /* optional */
+  line-height: 1.4em;
+  /* optional */
+  hyphens: auto;
+  /* optional */
+  font-smooth: always;
+  /* optional */
+  -webkit-font-smoothing: antialiased;
+  /* optional */
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Selected text */
+::selection {
+  background-color: var(--color-black);
+  color: var(--color-white);
+}
+
+/* FIX COMMON BUGS WITH... */
+
+/* Spacing */
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  box-sizing: inherit;
+  vertical-align: baseline;
+}
+
+/* Media resources */
+img,
+picture,
+video,
+iframe,
+figure {
+  max-width: 100%;
+  width: 100%;
+  display: block;
+  /* optional */
+  object-fit: cover;
+  /* optional */
+  object-position: center center;
+}
+
+/* Anchor tags */
+// Outside paragraphs
+a {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  font-size: inherit;
+}
+// Within paragraphs
+p a {
+  display: inline;
+}
+
+/* List items */
+li {
+  list-style-type: none;
+}
+
+/* Text tags */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+span,
+a,
+strong,
+blockquote,
+i,
+b,
+u,
+em {
+  font-weight: inherit;
+  font-style: inherit;
+  text-decoration: none;
+  color: inherit;
+}
