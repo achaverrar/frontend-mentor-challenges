@@ -17,10 +17,6 @@ body {
   /* optional */
   text-align: left;
   /* optional */
-  line-height: 1.4em;
-  /* optional */
-  hyphens: auto;
-  /* optional */
   font-smooth: always;
   /* optional */
   -webkit-font-smoothing: antialiased;
@@ -100,8 +96,10 @@ blockquote,
 i,
 b,
 u,
-em {
+em,
+button {
   font-weight: inherit;
+  font-family: inherit;
   font-style: inherit;
   text-decoration: none;
   color: inherit;

@@ -1,0 +1,54 @@
+.card {
+  background-color: var(--color-white);
+  border-radius: 8px;
+  overflow: hidden;
+
+  &__image {
+    height: 24rem;
+    width: 100%;
+    background-image: url(../../dist/images/image-product-mobile.jpg);
+    background-size: cover;
+  }
+  &__info {
+    padding-top: 2.2rem;
+    padding-right: 2.3rem;
+    padding-left: 2.5rem;
+    padding-bottom: 2.4rem;
+    font-size: 1.4rem;
+
+    &-tag {
+      text-transform: uppercase;
+      letter-spacing: 0.4em;
+      color: var(--color-neutral);
+      font-size: 1.2rem;
+      font-weight: 700;
+    }
+    &-title {
+      margin-top: 1.2rem;
+      font-family: var(--font-secondary);
+      font-weight: 700;
+      font-size: 3.2rem;
+      line-height: 1em;
+    }
+    &-description {
+      margin-top: 1.65rem;
+      line-height: 1.65em;
+    }
+    &-prices {
+      margin-top: 2rem;
+      margin-bottom: 1.6rem;
+      display: flex;
+      align-items: center;
+      gap: 1.65rem;
+    }
+    &-price--new {
+      font-family: var(--font-secondary);
+      font-weight: 700;
+      font-size: 3.2rem;
+      color: var(--color-primary-light);
+    }
+    &-price--old {
+      text-decoration: line-through;
+    }
+  }
+}

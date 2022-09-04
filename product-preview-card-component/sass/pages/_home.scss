@@ -1,6 +1,19 @@
-/*
-section-about
-section-feature
-section-testimonials
-section-cta
-*/
+@use "../abstracts/mixins" as m;
+@use "../abstracts/variables" as v;
+
+.container {
+  background-color: var(--color-secondary-light);
+  /* background: linear-gradient(
+      0deg,
+      hsla(0, 0, 100%, 0.5),
+      hsla(0, 0, 100%, 0.5)
+    ),
+    url(../../design/mobile-design.jpg); */
+  margin: auto;
+  width: 375px;
+  height: 667px;
+  background-size: contain;
+  padding-top: 2.8rem;
+  padding-left: 1.6rem;
+  padding-right: 1.6rem;
+}

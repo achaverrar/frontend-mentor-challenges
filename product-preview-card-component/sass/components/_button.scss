@@ -1,4 +1,20 @@
-/*
-button, .button {}
-
-*/
+.button {
+  background-color: var(--color-primary-light);
+  display: flex;
+  gap: 0.85em;
+  width: 100%;
+  justify-content: center;
+  padding: 1.2em;
+  border-radius: 8px;
+  color: var(--color-white);
+  transition: all 250ms ease-in-out;
+  &__text {
+    font-weight: 700;
+    font-size: 1.4rem;
+  }
+  &:hover,
+  &:active {
+    background-color: var(--color-primary-dark);
+    cursor: pointer;
+  }
+}

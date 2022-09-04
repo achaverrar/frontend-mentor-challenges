@@ -19,3 +19,12 @@ HEADINGS
 PARAGRAPHS
 p {}
 */
+
+a {
+  color: var(--color-primary-light);
+  transition: all 250ms ease-in-out;
+  &:hover,
+  &:active {
+    color: var(--color-primary-dark);
+  }
+}
