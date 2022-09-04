@@ -1,22 +1,3 @@
-/* 
-COLOR PALETTE
-color-primary: var();
-color-secondary: var();
-color-tertiary: var();
-color-white: var();
-color-grey: var();
-color-black: var();
-
-FONT DATA
-font-size:
-font-weight:
-font-family:
-
-GRID INFO
-$grid-width
-$gutter-vertical
-$gutter-horizontal
-*/
 :root {
   --color-primary-light: hsl(158, 36%, 37%);
   --color-primary-dark: hsl(156, 42%, 18%);
@@ -33,7 +14,7 @@ $gutter-horizontal
 RESET PRO
 source: https://github.com/eduardofierropro/Reset-CSS
 */
-/* BASIC SETTING FOR */
+/* BASIC SETTINGS FOR */
 /* Font */
 html {
   font-size: 62.5%;
@@ -60,7 +41,7 @@ html {
 
 /* Selected text */
 ::selection {
-  background-color: var(--color-black);
+  background-color: var(--color-primary-light);
   color: var(--color-white);
 }
 
@@ -76,21 +57,6 @@ html {
   vertical-align: baseline;
 }
 
-/* Media resources */
-img,
-picture,
-video,
-iframe,
-figure {
-  max-width: 100%;
-  width: 100%;
-  display: block;
-  /* optional */
-  object-fit: cover;
-  /* optional */
-  object-position: center center;
-}
-
 /* Anchor tags */
 a {
   display: block;
@@ -103,27 +69,12 @@ p a {
   display: inline;
 }
 
-/* List items */
-li {
-  list-style-type: none;
-}
-
 /* Text tags */
 h1,
-h2,
-h3,
-h4,
-h5,
-h6,
 p,
 span,
 a,
 strong,
-blockquote,
-i,
-b,
-u,
-em,
 button {
   font-weight: inherit;
   font-family: inherit;
@@ -134,23 +85,11 @@ button {
 
 body {
   font-family: var(--font-primary);
-  color: var(--color-black);
+  color: var(--color-neutral);
   font-weight: 500;
-  /* 
-  line-height:
-  padding: 
-  */
+  font-size: var(--default-font-size);
 }
 
-/*
-HEADINGS
-.heading-primary {}
-.heading-secondary {}
-.heading-tertiary {}
-
-PARAGRAPHS
-p {}
-*/
 a {
   color: var(--color-primary-light);
   transition: all 250ms ease-in-out;
@@ -204,7 +143,7 @@ flex-jc-sp {
 }
 .button__text {
   font-weight: 700;
-  font-size: 1.4rem;
+  font-size: inherit;
 }
 .button:hover, .button:active {
   background-color: var(--color-primary-dark);
@@ -223,10 +162,7 @@ flex-jc-sp {
   background-size: cover;
 }
 .card__info {
-  padding-top: 2.2rem;
-  padding-right: 2.3rem;
-  padding-left: 2.5rem;
-  padding-bottom: 2.4rem;
+  padding: 2.2rem 2.3rem 2.4rem 2.5rem;
   font-size: 1.4rem;
 }
 .card__info-tag {
@@ -240,6 +176,7 @@ flex-jc-sp {
   margin-top: 1.2rem;
   font-family: var(--font-secondary);
   font-weight: 700;
+  color: var(--color-black);
   font-size: 3.2rem;
   line-height: 1em;
 }
@@ -248,8 +185,7 @@ flex-jc-sp {
   line-height: 1.65em;
 }
 .card__info-prices {
-  margin-top: 2rem;
-  margin-bottom: 1.6rem;
+  margin: 2rem 0 1.6rem 0;
   display: flex;
   align-items: center;
   gap: 1.65rem;
@@ -273,8 +209,7 @@ footer {
   font-size: 1.4rem;
   font-family: var(--font-primary);
   text-align: center;
-  margin-left: auto;
-  margin-right: auto;
+  margin: auto;
 }
 
 .container {
@@ -288,10 +223,7 @@ footer {
   margin: auto;
   width: 375px;
   height: 667px;
-  background-size: contain;
-  padding-top: 2.8rem;
-  padding-left: 1.6rem;
-  padding-right: 1.6rem;
+  padding: 2.8rem 1.6rem 0 1.6rem;
 }
 
 /*# sourceMappingURL=style.css.map */

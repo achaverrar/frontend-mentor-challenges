@@ -3,7 +3,7 @@ RESET PRO
 source: https://github.com/eduardofierropro/Reset-CSS
 */
 
-/* BASIC SETTING FOR */
+/* BASIC SETTINGS FOR */
 /* Font */
 
 html {
@@ -31,7 +31,7 @@ html {
 
 /* Selected text */
 ::selection {
-  background-color: var(--color-black);
+  background-color: var(--color-primary-light);
   color: var(--color-white);
 }
 
@@ -48,21 +48,6 @@ html {
   vertical-align: baseline;
 }
 
-/* Media resources */
-img,
-picture,
-video,
-iframe,
-figure {
-  max-width: 100%;
-  width: 100%;
-  display: block;
-  /* optional */
-  object-fit: cover;
-  /* optional */
-  object-position: center center;
-}
-
 /* Anchor tags */
 // Outside paragraphs
 a {
@@ -76,27 +61,12 @@ p a {
   display: inline;
 }
 
-/* List items */
-li {
-  list-style-type: none;
-}
-
 /* Text tags */
 h1,
-h2,
-h3,
-h4,
-h5,
-h6,
 p,
 span,
 a,
 strong,
-blockquote,
-i,
-b,
-u,
-em,
 button {
   font-weight: inherit;
   font-family: inherit;
