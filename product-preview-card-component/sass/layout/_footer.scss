@@ -1,11 +1,17 @@
+@use "../abstracts/mixins" as m;
+
 footer {
-  margin-top: 2em;
+  margin-top: 1em;
 }
 
 .attribution {
-  width: 375px;
+  width: 37.5rem;
   font-size: 1.4rem;
   font-family: var(--font-primary);
   text-align: center;
   margin: auto;
+
+  @include m.breakpoint(xlarge) {
+    width: 1440px;
+  }
 }

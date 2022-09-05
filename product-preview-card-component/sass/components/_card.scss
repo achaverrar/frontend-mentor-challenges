@@ -1,25 +1,47 @@
+@use "../abstracts/mixins" as m;
+
 .card {
   background-color: var(--color-white);
   border-radius: 8px;
   overflow: hidden;
+
+  @include m.breakpoint(xlarge) {
+    display: flex; //
+    height: 45rem; //
+    width: 60rem; //
+    transform: translateY(-1.4rem); //
+  }
 
   &__image {
     height: 24rem;
     width: 100%;
     background-image: url(../../dist/images/image-product-mobile.jpg);
     background-size: cover;
+
+    @include m.breakpoint(xlarge) {
+      height: 100%; //
+      flex-basis: 50%; //
+      background-image: url(../../dist/images/image-product-desktop.jpg); //
+    }
   }
 
   &__info {
     padding: 2.2rem 2.3rem 2.4rem 2.5rem;
     font-size: 1.4rem;
 
+    @include m.breakpoint(xlarge) {
+      padding: 0 3.2rem;
+      margin-top: 3.1rem; //
+      font-size: 1.4rem;
+      flex-basis: 50%; //
+    }
+
     &-tag {
       text-transform: uppercase;
       letter-spacing: 0.4em;
       color: var(--color-neutral);
       font-size: 1.2rem;
-      font-weight: 700;
+      font-weight: 500;
     }
 
     &-title {
@@ -29,11 +51,19 @@
       color: var(--color-black);
       font-size: 3.2rem;
       line-height: 1em;
+
+      @include m.breakpoint(xlarge) {
+        margin-top: 1.9rem; //
+      }
     }
 
     &-description {
       margin-top: 1.65rem;
       line-height: 1.65em;
+
+      @include m.breakpoint(xlarge) {
+        margin-top: 2.4rem; //
+      }
     }
 
     &-prices {
@@ -41,6 +71,11 @@
       display: flex;
       align-items: center;
       gap: 1.65rem;
+
+      @include m.breakpoint(xlarge) {
+        margin: 2.5rem 0 2.7rem 0;
+        gap: 1.9rem;
+      }
     }
 
     &-price--new {
@@ -52,6 +87,10 @@
 
     &-price--old {
       text-decoration: line-through;
+
+      @include m.breakpoint(xlarge) {
+        font-size: 1.3rem;
+      }
     }
   }
 }

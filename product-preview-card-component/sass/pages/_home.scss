@@ -1,16 +1,21 @@
 @use "../abstracts/mixins" as m;
-@use "../abstracts/variables" as v;
+
+body {
+  background-color: var(--color-secondary-light);
+}
 
 .container {
-  background-color: var(--color-secondary-light);
-  /* background: linear-gradient(
-      0deg,
-      hsla(0, 0, 100%, 0.5),
-      hsla(0, 0, 100%, 0.5)
-    ),
-    url(../../design/mobile-design.jpg); */
   margin: auto;
-  width: 375px;
-  height: 667px;
+  width: 37.5rem;
+  height: 66.7rem;
   padding: 2.8rem 1.6rem 0 1.6rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  @include m.breakpoint(xlarge) {
+    width: 144rem;
+    height: 80rem;
+    padding: 2.8rem 1.6rem 0 1.6rem;
+  }
 }

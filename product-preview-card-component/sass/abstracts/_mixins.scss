@@ -13,11 +13,11 @@
   transform: translate(-50%, -50%);
 }
 
-// 375px, 640px, 1024px, 1400px
+// 376px, 1024px, 1440px
 $breakpoints-up: (
-  "medium": "64em",
-  "large": "102.4em",
-  "xlarge": "144em",
+  "medium": "23.5em",
+  "large": "64em",
+  "xlarge": "90em",
 );
 
 @mixin breakpoint($size) {
