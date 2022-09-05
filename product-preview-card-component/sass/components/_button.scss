@@ -11,6 +11,11 @@
   color: var(--color-white);
   transition: all 250ms ease-in-out;
 
+  @include m.breakpoint(large) {
+    gap: 1.16rem;
+    line-height: 115%;
+  }
+
   @include m.breakpoint(xlarge) {
     gap: 1.16rem;
     line-height: 115%;

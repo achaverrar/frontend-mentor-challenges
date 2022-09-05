@@ -5,10 +5,17 @@
   border-radius: 8px;
   overflow: hidden;
 
+  @include m.breakpoint(large) {
+    display: flex; //
+    min-height: 45rem; //
+    min-width: 60rem; //
+    transform: translateY(-1.4rem); //
+  }
+
   @include m.breakpoint(xlarge) {
     display: flex; //
-    height: 45rem; //
-    width: 60rem; //
+    min-height: 45rem; //
+    min-width: 60rem; //
     transform: translateY(-1.4rem); //
   }
 
@@ -17,6 +24,12 @@
     width: 100%;
     background-image: url(../../dist/images/image-product-mobile.jpg);
     background-size: cover;
+
+    @include m.breakpoint(large) {
+      min-height: 45rem; //
+      flex-basis: 50%; //
+      background-image: url(../../dist/images/image-product-desktop.jpg); //
+    }
 
     @include m.breakpoint(xlarge) {
       height: 100%; //
@@ -29,6 +42,12 @@
     padding: 2.2rem 2.3rem 2.4rem 2.5rem;
     font-size: 1.4rem;
 
+    @include m.breakpoint(large) {
+      padding: 0 3.2rem;
+      margin-top: 3.1rem; //
+      font-size: 1.4rem;
+      flex-basis: 50%; //
+    }
     @include m.breakpoint(xlarge) {
       padding: 0 3.2rem;
       margin-top: 3.1rem; //
@@ -52,6 +71,9 @@
       font-size: 3.2rem;
       line-height: 1em;
 
+      @include m.breakpoint(large) {
+        margin-top: 1.9rem; //
+      }
       @include m.breakpoint(xlarge) {
         margin-top: 1.9rem; //
       }
@@ -61,6 +83,9 @@
       margin-top: 1.65rem;
       line-height: 1.65em;
 
+      @include m.breakpoint(large) {
+        margin-top: 2.4rem; //
+      }
       @include m.breakpoint(xlarge) {
         margin-top: 2.4rem; //
       }
@@ -72,6 +97,10 @@
       align-items: center;
       gap: 1.65rem;
 
+      @include m.breakpoint(large) {
+        margin: 2.5rem 0 2.7rem 0;
+        gap: 1.9rem;
+      }
       @include m.breakpoint(xlarge) {
         margin: 2.5rem 0 2.7rem 0;
         gap: 1.9rem;
@@ -88,6 +117,9 @@
     &-price--old {
       text-decoration: line-through;
 
+      @include m.breakpoint(large) {
+        font-size: 1.3rem;
+      }
       @include m.breakpoint(xlarge) {
         font-size: 1.3rem;
       }

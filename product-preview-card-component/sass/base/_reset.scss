@@ -9,11 +9,11 @@ source: https://github.com/eduardofierropro/Reset-CSS
 html {
   font-size: 62.5%;
   box-sizing: border-box;
-  min-height: 100vh;
+  height: 100vh;
 }
 
 body {
-  min-height: 100%;
+  height: 100%;
   /* optional */
   text-align: left;
   /* optional */

@@ -19,11 +19,11 @@ source: https://github.com/eduardofierropro/Reset-CSS
 html {
   font-size: 62.5%;
   box-sizing: border-box;
-  min-height: 100vh;
+  height: 100vh;
 }
 
 body {
-  min-height: 100%;
+  height: 100%;
   /* optional */
   text-align: left;
   /* optional */
@@ -140,6 +140,12 @@ flex-jc-sp {
   color: var(--color-white);
   transition: all 250ms ease-in-out;
 }
+@media (min-width: 40.625em) {
+  .button {
+    gap: 1.16rem;
+    line-height: 115%;
+  }
+}
 @media (min-width: 90em) {
   .button {
     gap: 1.16rem;
@@ -160,11 +166,19 @@ flex-jc-sp {
   border-radius: 8px;
   overflow: hidden;
 }
+@media (min-width: 40.625em) {
+  .card {
+    display: flex;
+    min-height: 45rem;
+    min-width: 60rem;
+    transform: translateY(-1.4rem);
+  }
+}
 @media (min-width: 90em) {
   .card {
     display: flex;
-    height: 45rem;
-    width: 60rem;
+    min-height: 45rem;
+    min-width: 60rem;
     transform: translateY(-1.4rem);
   }
 }
@@ -173,6 +187,13 @@ flex-jc-sp {
   width: 100%;
   background-image: url(../../dist/images/image-product-mobile.jpg);
   background-size: cover;
+}
+@media (min-width: 40.625em) {
+  .card__image {
+    min-height: 45rem;
+    flex-basis: 50%;
+    background-image: url(../../dist/images/image-product-desktop.jpg);
+  }
 }
 @media (min-width: 90em) {
   .card__image {
@@ -184,6 +205,14 @@ flex-jc-sp {
 .card__info {
   padding: 2.2rem 2.3rem 2.4rem 2.5rem;
   font-size: 1.4rem;
+}
+@media (min-width: 40.625em) {
+  .card__info {
+    padding: 0 3.2rem;
+    margin-top: 3.1rem;
+    font-size: 1.4rem;
+    flex-basis: 50%;
+  }
 }
 @media (min-width: 90em) {
   .card__info {
@@ -208,6 +237,11 @@ flex-jc-sp {
   font-size: 3.2rem;
   line-height: 1em;
 }
+@media (min-width: 40.625em) {
+  .card__info-title {
+    margin-top: 1.9rem;
+  }
+}
 @media (min-width: 90em) {
   .card__info-title {
     margin-top: 1.9rem;
@@ -216,6 +250,11 @@ flex-jc-sp {
 .card__info-description {
   margin-top: 1.65rem;
   line-height: 1.65em;
+}
+@media (min-width: 40.625em) {
+  .card__info-description {
+    margin-top: 2.4rem;
+  }
 }
 @media (min-width: 90em) {
   .card__info-description {
@@ -227,6 +266,12 @@ flex-jc-sp {
   display: flex;
   align-items: center;
   gap: 1.65rem;
+}
+@media (min-width: 40.625em) {
+  .card__info-prices {
+    margin: 2.5rem 0 2.7rem 0;
+    gap: 1.9rem;
+  }
 }
 @media (min-width: 90em) {
   .card__info-prices {
@@ -243,6 +288,11 @@ flex-jc-sp {
 .card__info-price--old {
   text-decoration: line-through;
 }
+@media (min-width: 40.625em) {
+  .card__info-price--old {
+    font-size: 1.3rem;
+  }
+}
 @media (min-width: 90em) {
   .card__info-price--old {
     font-size: 1.3rem;
@@ -250,7 +300,8 @@ flex-jc-sp {
 }
 
 footer {
-  margin-top: 1em;
+  bottom: 1em;
+  position: absolute;
 }
 
 .attribution {
@@ -260,24 +311,41 @@ footer {
   text-align: center;
   margin: auto;
 }
+@media (min-width: 40.625em) {
+  .attribution {
+    width: 65rem;
+  }
+}
 @media (min-width: 90em) {
   .attribution {
-    width: 1440px;
+    width: 144rem;
   }
 }
 
 body {
   background-color: var(--color-secondary-light);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
 }
 
 .container {
   margin: auto;
-  width: 37.5rem;
-  height: 66.7rem;
+  max-width: 37.5rem;
+  max-height: 66.7rem;
   padding: 2.8rem 1.6rem 0 1.6rem;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+@media (min-width: 40.625em) {
+  .container {
+    width: 65rem;
+    height: 50rem;
+    padding: 2.8rem 1.6rem 0 1.6rem;
+  }
 }
 @media (min-width: 90em) {
   .container {
