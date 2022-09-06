@@ -164,21 +164,13 @@ flex-jc-sp {
 .card {
   background-color: var(--color-white);
   border-radius: 8px;
+  width: 100%;
+  height: 100%;
   overflow: hidden;
 }
 @media (min-width: 40.625em) {
   .card {
     display: flex;
-    min-height: 45rem;
-    min-width: 60rem;
-    transform: translateY(-1.4rem);
-  }
-}
-@media (min-width: 90em) {
-  .card {
-    display: flex;
-    min-height: 45rem;
-    min-width: 60rem;
     transform: translateY(-1.4rem);
   }
 }
@@ -198,7 +190,6 @@ flex-jc-sp {
 @media (min-width: 90em) {
   .card__image {
     height: 100%;
-    flex-basis: 50%;
     background-image: url(../../dist/images/image-product-desktop.jpg);
   }
 }
@@ -219,7 +210,6 @@ flex-jc-sp {
     padding: 0 3.2rem;
     margin-top: 3.1rem;
     font-size: 1.4rem;
-    flex-basis: 50%;
   }
 }
 .card__info-tag {
@@ -326,13 +316,12 @@ body {
   background-color: var(--color-secondary-light);
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   position: relative;
 }
 
 .container {
-  margin: auto;
   max-width: 37.5rem;
   max-height: 66.7rem;
   padding: 2.8rem 1.6rem 0 1.6rem;
@@ -342,16 +331,22 @@ body {
 }
 @media (min-width: 40.625em) {
   .container {
-    width: 65rem;
-    height: 50rem;
-    padding: 2.8rem 1.6rem 0 1.6rem;
+    width: 60rem;
+    height: 45rem;
+    max-width: 60rem;
+    max-height: 45rem;
+    padding: 0;
   }
 }
 @media (min-width: 90em) {
   .container {
-    width: 144rem;
-    height: 80rem;
-    padding: 2.8rem 1.6rem 0 1.6rem;
+    min-width: 60rem;
+    min-height: 45rem;
+    width: 41.67%;
+    height: 56.25%;
+    max-width: none;
+    max-height: none;
+    padding: 0;
   }
 }
 

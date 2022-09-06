@@ -4,13 +4,13 @@ body {
   background-color: var(--color-secondary-light);
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   position: relative;
 }
 
 .container {
-  margin: auto;
+  //margin: auto;
   max-width: 37.5rem;
   max-height: 66.7rem;
   padding: 2.8rem 1.6rem 0 1.6rem;
@@ -19,14 +19,22 @@ body {
   align-items: center;
 
   @include m.breakpoint(large) {
-    width: 65rem;
-    height: 50rem;
-    padding: 2.8rem 1.6rem 0 1.6rem;
+    width: 60rem;
+    height: 45rem;
+    max-width: 60rem;
+    max-height: 45rem;
+    //padding: 2.8rem 1.6rem 0 1.6rem;
+    padding: 0;
   }
 
   @include m.breakpoint(xlarge) {
-    width: 144rem;
-    height: 80rem;
-    padding: 2.8rem 1.6rem 0 1.6rem;
+    min-width: 60rem;
+    min-height: 45rem;
+    width: 41.67%;
+    height: 56.25%;
+    max-width: none;
+    max-height: none;
+    //padding: 2.8rem 1.6rem 0 1.6rem;
+    padding: 0;
   }
 }
