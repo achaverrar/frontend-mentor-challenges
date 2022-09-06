@@ -8,9 +8,8 @@
   --font-primary: "Montserrat", sans-serif;
   --font-secondary: "Fraunces", serif;
   --default-font-size: 1.4rem;
-  /* @include m.breakpoint(xlarge) {
-    --default-font-size: 2rem;
-  } */
+  --width-mobile: 60rem;
+  --width-desktop: 144rem;
 }
 
 /*
@@ -189,7 +188,6 @@ flex-jc-sp {
 @media (min-width: 40.625em) {
   .card {
     display: flex;
-    transform: translateY(-1.4rem);
   }
 }
 .card__image {
@@ -208,7 +206,6 @@ flex-jc-sp {
 @media (min-width: 93.75em) {
   .card__image {
     height: 100%;
-    background-image: url(../../dist/images/image-product-desktop.jpg);
   }
 }
 .card__info {
@@ -318,47 +315,27 @@ flex-jc-sp {
 footer {
   bottom: 1em;
   position: absolute;
+  width: 100%;
 }
 
 .attribution {
-  width: 37.5rem;
-  font-size: 1.4rem;
+  font-size: var(--default-font-size);
   font-family: var(--font-primary);
   text-align: center;
-  margin: auto;
-}
-@media (min-width: 40.625em) {
-  .attribution {
-    width: 65rem;
-  }
-}
-@media (min-width: 93.75em) {
-  .attribution {
-    width: 100%;
-  }
 }
 
 body {
   background-color: var(--color-secondary-light);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
   position: relative;
-}
-@media (min-width: 93.75em) {
-  body {
-    display: block;
-  }
 }
 
 .container {
   max-width: 37.5rem;
   max-height: 66.7rem;
-  padding: 2.8rem 1.6rem 0 1.6rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 @media (min-width: 40.625em) {
   .container {
@@ -366,7 +343,6 @@ body {
     height: 45rem;
     max-width: 60rem;
     max-height: 45rem;
-    padding: 0;
   }
 }
 @media (min-width: 93.75em) {
@@ -377,11 +353,6 @@ body {
     height: 56.25vh;
     max-width: none;
     max-height: none;
-    padding: 0;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
   }
 }
 

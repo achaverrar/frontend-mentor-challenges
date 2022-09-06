@@ -3,20 +3,11 @@
 footer {
   bottom: 1em;
   position: absolute;
+  width: 100%;
 }
 
 .attribution {
-  width: 37.5rem;
-  font-size: 1.4rem;
+  font-size: var(--default-font-size);
   font-family: var(--font-primary);
   text-align: center;
-  margin: auto;
-
-  @include m.breakpoint(large) {
-    width: 65rem;
-  }
-
-  @include m.breakpoint(xlarge) {
-    width: 100%;
-  }
 }

@@ -16,7 +16,7 @@
   --font-secondary: "Fraunces", serif;
   --default-font-size: 1.4rem;
 
-  /* @include m.breakpoint(xlarge) {
-    --default-font-size: 2rem;
-  } */
+  // WIDTHS
+  --width-mobile: 60rem;
+  --width-desktop: 144rem;
 }

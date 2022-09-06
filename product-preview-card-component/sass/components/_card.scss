@@ -9,16 +9,9 @@
 
   @include m.breakpoint(large) {
     display: flex; //
-    //min-height: 45rem; //
-    //min-width: 60rem; //
-    transform: translateY(-1.4rem); //
   }
 
   @include m.breakpoint(xlarge) {
-    //display: flex; //
-    //min-height: 45rem; //
-    //min-width: 60rem; //
-    //transform: translateY(-1.4rem); //
   }
 
   &__image {
@@ -35,8 +28,6 @@
 
     @include m.breakpoint(xlarge) {
       height: 100%; //
-      //flex-basis: 50%; //
-      background-image: url(../../dist/images/image-product-desktop.jpg); //
     }
   }
 
