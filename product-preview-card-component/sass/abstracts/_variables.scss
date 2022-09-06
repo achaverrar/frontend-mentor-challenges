@@ -1,3 +1,5 @@
+@use "mixins" as m;
+
 :root {
   // COLORS
   --color-primary-light: hsl(158, 36%, 37%); // Dark cyan:
@@ -13,4 +15,8 @@
   --font-primary: "Montserrat", sans-serif;
   --font-secondary: "Fraunces", serif;
   --default-font-size: 1.4rem;
+
+  /* @include m.breakpoint(xlarge) {
+    --default-font-size: 2rem;
+  } */
 }

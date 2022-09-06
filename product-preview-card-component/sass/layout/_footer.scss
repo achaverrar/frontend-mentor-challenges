@@ -17,6 +17,6 @@ footer {
   }
 
   @include m.breakpoint(xlarge) {
-    width: 144rem;
+    width: 100%;
   }
 }

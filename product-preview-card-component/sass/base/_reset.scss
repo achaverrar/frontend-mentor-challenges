@@ -5,11 +5,21 @@ source: https://github.com/eduardofierropro/Reset-CSS
 
 /* BASIC SETTINGS FOR */
 /* Font */
+@use "../abstracts/mixins" as m;
 
 html {
   font-size: 62.5%;
   box-sizing: border-box;
   height: 100vh;
+  @include m.breakpoint(xlarge) {
+    font-size: 70%;
+  }
+  @include m.breakpoint(xlarge1) {
+    font-size: 90%;
+  }
+  @include m.breakpoint(xlarge2) {
+    font-size: 100%;
+  }
 }
 
 body {

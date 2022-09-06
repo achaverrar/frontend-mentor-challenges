@@ -46,14 +46,14 @@
 
     @include m.breakpoint(large) {
       padding: 0 3.2rem;
-      margin-top: 3.1rem; //
-      font-size: 1.4rem;
+      padding-top: 3.1rem; //
+      //font-size: 1.4rem;
       flex-basis: 50%; //
     }
     @include m.breakpoint(xlarge) {
-      padding: 0 3.2rem;
-      margin-top: 3.1rem; //
-      font-size: 1.4rem;
+      //padding: 0 3.2rem;
+      //margin-top: 3.1rem; //
+      font-size: var(--default-font-size);
       //flex-basis: 50%; //
     }
 
@@ -63,6 +63,9 @@
       color: var(--color-neutral);
       font-size: 1.2rem;
       font-weight: 500;
+      @include m.breakpoint(xlarge) {
+        font-size: calc(var(--default-font-size) * 0.86);
+      }
     }
 
     &-title {
@@ -78,6 +81,7 @@
       }
       @include m.breakpoint(xlarge) {
         margin-top: 1.9rem; //
+        font-size: calc(var(--default-font-size) * 2.3);
       }
     }
 
@@ -114,6 +118,10 @@
       font-weight: 700;
       font-size: 3.2rem;
       color: var(--color-primary-light);
+
+      @include m.breakpoint(xlarge) {
+        font-size: calc(var(--default-font-size) * 2.3);
+      }
     }
 
     &-price--old {
@@ -123,7 +131,7 @@
         font-size: 1.3rem;
       }
       @include m.breakpoint(xlarge) {
-        font-size: 1.3rem;
+        font-size: calc(var(--default-font-size) * 0.92);
       }
     }
   }
