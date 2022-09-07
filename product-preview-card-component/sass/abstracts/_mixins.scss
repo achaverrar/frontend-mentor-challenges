@@ -5,8 +5,9 @@
   transform: translate(-50%, -50%);
 }
 
-// 376px, 650px, 1440px
+// 320px, 376px, 650px, 1440px
 $breakpoints-up: (
+  "small": "20em",
   "medium": "23.5em",
   "large": "40.625em",
   "xlarge": "93.75em",

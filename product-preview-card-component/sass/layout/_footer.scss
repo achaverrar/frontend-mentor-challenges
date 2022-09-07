@@ -1,9 +1,14 @@
 @use "../abstracts/mixins" as m;
 
 footer {
-  bottom: 1em;
-  position: absolute;
   width: 100%;
+  position: absolute;
+  bottom: 1em;
+  transform: none;
+
+  @include m.breakpoint(small) {
+    transform: translateY(calc(3 * var(--default-font-size)));
+  }
 }
 
 .attribution {
