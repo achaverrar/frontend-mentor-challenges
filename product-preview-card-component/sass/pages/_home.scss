@@ -4,11 +4,14 @@ body {
   background-color: var(--color-secondary-light);
   display: flex;
   flex-direction: column;
+  min-height: 100vh;
+  align-items: center;
+  justify-content: center;
 
-  @media screen and (min-height: 710px), screen and (min-width: 650px) {
-    min-height: 100vh;
-    align-items: center;
-    justify-content: center;
+  @media (max-height: 709px) and (max-width: 649px) {
+    min-height: 0;
+    align-items: stretch;
+    justify-content: flex-start;
   }
 }
 
@@ -24,6 +27,12 @@ body {
     height: 45rem;
     max-width: 60rem;
     max-height: 45rem;
+    margin: var(--default-font-size);
+    margin-top: calc(4.4 * var(--default-font-size));
+  }
+
+  @media (min-width: 600px) and (max-height: 572px) {
+    margin-top: var(--default-font-size);
   }
 
   @include m.breakpoint(xlarge) {

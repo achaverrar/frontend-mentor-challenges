@@ -10,6 +10,7 @@
   @include m.breakpoint(large) {
     display: flex; //
     max-width: none;
+    margin: 0;
   }
 
   &__image {
