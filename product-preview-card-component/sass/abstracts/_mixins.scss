@@ -1,21 +1,8 @@
-@mixin absCenter {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-// 320px, 376px, 650px, 1440px
+// 376px, 650px, 1440px
 $breakpoints-up: (
-  "small": "20em",
   "medium": "23.5em",
   "large": "40.625em",
   "xlarge": "93.75em",
-  // 70
-  "xlarge1": "113em",
-  //80
-  "xlarge2": "125em",
-  //100
 );
 
 @mixin breakpoint($size) {

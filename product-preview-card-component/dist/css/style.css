@@ -27,12 +27,12 @@ html {
     font-size: 70%;
   }
 }
-@media (min-width: 113em) {
+@media (min-width: ) {
   html {
     font-size: 90%;
   }
 }
-@media (min-width: 125em) {
+@media (min-width: ) {
   html {
     font-size: 100%;
   }
@@ -183,17 +183,20 @@ flex-jc-sp {
   border-radius: 8px;
   overflow: hidden;
   margin: 2.8rem 1.6rem;
+  max-width: 343px;
 }
 @media (min-width: 40.625em) {
   .card {
     display: flex;
+    max-width: none;
   }
 }
 .card__image {
   height: 24rem;
   width: 100%;
-  background-image: url(../../dist/images/image-product-mobile.jpg);
+  background-image: url(../../dist/images/image-product-mobile.jpg), url(../../dist/images/image-product-mobile.jpg);
   background-size: cover;
+  filter: contrast(1.2) brightness(0.87);
 }
 @media (min-width: 40.625em) {
   .card__image {
@@ -272,18 +275,16 @@ flex-jc-sp {
   margin: 2rem 0 1.6rem 0;
   display: flex;
   align-items: center;
-  gap: 1.65rem;
+  gap: 1.9rem;
 }
 @media (min-width: 40.625em) {
   .card__info-prices {
     margin: 2.5rem 0 2.7rem 0;
-    gap: 1.9rem;
   }
 }
 @media (min-width: 93.75em) {
   .card__info-prices {
     margin: 2.5rem 0 2.7rem 0;
-    gap: 1.9rem;
   }
 }
 .card__info-price--new {
@@ -299,28 +300,16 @@ flex-jc-sp {
 }
 .card__info-price--old {
   text-decoration: line-through;
+  font-size: calc(var(--default-font-size) * 0.92);
 }
 @media (min-width: 40.625em) {
   .card__info-price--old {
     font-size: 1.3rem;
   }
 }
-@media (min-width: 93.75em) {
-  .card__info-price--old {
-    font-size: calc(var(--default-font-size) * 0.92);
-  }
-}
-
 footer {
   width: 100%;
-  position: absolute;
-  bottom: 1em;
-  transform: none;
-}
-@media (min-width: 20em) {
-  footer {
-    transform: translateY(calc(3 * var(--default-font-size)));
-  }
+  margin-bottom: var(--default-font-size);
 }
 
 .attribution {
@@ -331,6 +320,15 @@ footer {
 
 body {
   background-color: var(--color-secondary-light);
+  display: flex;
+  flex-direction: column;
+}
+@media screen and (min-height: 710px), screen and (min-width: 650px) {
+  body {
+    min-height: 100vh;
+    align-items: center;
+    justify-content: center;
+  }
 }
 
 .container {
@@ -339,9 +337,6 @@ body {
   justify-content: center;
   width: 100%;
   height: 100%;
-  /* width: 34.3rem;
-  height: 61.2rem; */
-  margin-bottom: 5rem;
 }
 @media (min-width: 40.625em) {
   .container {

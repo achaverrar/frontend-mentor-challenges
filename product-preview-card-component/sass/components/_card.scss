@@ -5,19 +5,20 @@
   border-radius: 8px;
   overflow: hidden;
   margin: 2.8rem 1.6rem;
+  max-width: 343px;
 
   @include m.breakpoint(large) {
     display: flex; //
-  }
-
-  @include m.breakpoint(xlarge) {
+    max-width: none;
   }
 
   &__image {
     height: 24rem;
     width: 100%;
-    background-image: url(../../dist/images/image-product-mobile.jpg);
+    background-image: url(../../dist/images/image-product-mobile.jpg),
+      url(../../dist/images/image-product-mobile.jpg);
     background-size: cover;
+    filter: contrast(1.2) brightness(0.87);
 
     @include m.breakpoint(large) {
       min-height: 45rem; //
@@ -37,14 +38,10 @@
     @include m.breakpoint(large) {
       padding: 0 3.2rem;
       padding-top: 3.1rem; //
-      //font-size: 1.4rem;
       flex-basis: 50%; //
     }
     @include m.breakpoint(xlarge) {
-      //padding: 0 3.2rem;
-      //margin-top: 3.1rem; //
       font-size: var(--default-font-size);
-      //flex-basis: 50%; //
     }
 
     &-tag {
@@ -91,15 +88,13 @@
       margin: 2rem 0 1.6rem 0;
       display: flex;
       align-items: center;
-      gap: 1.65rem;
+      gap: 1.9rem;
 
       @include m.breakpoint(large) {
         margin: 2.5rem 0 2.7rem 0;
-        gap: 1.9rem;
       }
       @include m.breakpoint(xlarge) {
         margin: 2.5rem 0 2.7rem 0;
-        gap: 1.9rem;
       }
     }
 
@@ -116,12 +111,12 @@
 
     &-price--old {
       text-decoration: line-through;
+      font-size: calc(var(--default-font-size) * 0.92);
 
       @include m.breakpoint(large) {
         font-size: 1.3rem;
       }
       @include m.breakpoint(xlarge) {
-        font-size: calc(var(--default-font-size) * 0.92);
       }
     }
   }
