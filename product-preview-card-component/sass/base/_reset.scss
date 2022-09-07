@@ -10,14 +10,9 @@ source: https://github.com/eduardofierropro/Reset-CSS
 html {
   font-size: 62.5%;
   box-sizing: border-box;
+
   @include m.breakpoint(xlarge) {
     font-size: 70%;
-  }
-  @include m.breakpoint(xlarge1) {
-    font-size: 90%;
-  }
-  @include m.breakpoint(xlarge2) {
-    font-size: 100%;
   }
 }
 

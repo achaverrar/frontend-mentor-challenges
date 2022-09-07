@@ -16,14 +16,8 @@
     line-height: 115%;
   }
 
-  @include m.breakpoint(xlarge) {
-    gap: 1.16rem;
-    line-height: 115%;
-  }
-
   &__text {
     font-weight: 700;
-    font-size: 1.4rem; //
   }
 
   &:hover,

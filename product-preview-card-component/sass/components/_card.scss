@@ -26,23 +26,15 @@
       flex-basis: 50%; //
       background-image: url(../../dist/images/image-product-desktop.jpg); //
     }
-
-    @include m.breakpoint(xlarge) {
-      height: 100%; //
-    }
   }
 
   &__info {
     padding: 2.2rem 2.3rem 2.4rem 2.5rem;
-    font-size: 1.4rem;
+    font-size: var(--default-font-size);
 
     @include m.breakpoint(large) {
-      padding: 0 3.2rem;
-      padding-top: 3.1rem; //
+      padding: 3.1rem 3.2rem 0 3.2rem;
       flex-basis: 50%; //
-    }
-    @include m.breakpoint(xlarge) {
-      font-size: var(--default-font-size);
     }
 
     &-tag {
@@ -51,9 +43,6 @@
       color: var(--color-neutral);
       font-size: 1.2rem;
       font-weight: 500;
-      @include m.breakpoint(xlarge) {
-        font-size: calc(var(--default-font-size) * 0.86);
-      }
     }
 
     &-title {
@@ -67,10 +56,6 @@
       @include m.breakpoint(large) {
         margin-top: 1.9rem; //
       }
-      @include m.breakpoint(xlarge) {
-        margin-top: 1.9rem; //
-        font-size: calc(var(--default-font-size) * 2.3);
-      }
     }
 
     &-description {
@@ -78,9 +63,6 @@
       line-height: 1.65em;
 
       @include m.breakpoint(large) {
-        margin-top: 2.4rem; //
-      }
-      @include m.breakpoint(xlarge) {
         margin-top: 2.4rem; //
       }
     }
@@ -94,9 +76,6 @@
       @include m.breakpoint(large) {
         margin: 2.5rem 0 2.7rem 0;
       }
-      @include m.breakpoint(xlarge) {
-        margin: 2.5rem 0 2.7rem 0;
-      }
     }
 
     &-price--new {
@@ -104,10 +83,6 @@
       font-weight: 700;
       font-size: 3.2rem;
       color: var(--color-primary-light);
-
-      @include m.breakpoint(xlarge) {
-        font-size: calc(var(--default-font-size) * 2.3);
-      }
     }
 
     &-price--old {
@@ -116,8 +91,6 @@
 
       @include m.breakpoint(large) {
         font-size: 1.3rem;
-      }
-      @include m.breakpoint(xlarge) {
       }
     }
   }

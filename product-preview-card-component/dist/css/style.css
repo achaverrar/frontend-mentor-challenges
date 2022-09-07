@@ -22,19 +22,9 @@ html {
   font-size: 62.5%;
   box-sizing: border-box;
 }
-@media (min-width: 93.75em) {
+@media (min-width: 112.5em) {
   html {
     font-size: 70%;
-  }
-}
-@media (min-width: ) {
-  html {
-    font-size: 90%;
-  }
-}
-@media (min-width: ) {
-  html {
-    font-size: 100%;
   }
 }
 
@@ -163,15 +153,8 @@ flex-jc-sp {
     line-height: 115%;
   }
 }
-@media (min-width: 93.75em) {
-  .button {
-    gap: 1.16rem;
-    line-height: 115%;
-  }
-}
 .button__text {
   font-weight: 700;
-  font-size: 1.4rem;
 }
 .button:hover, .button:active {
   background-color: var(--color-primary-dark);
@@ -206,25 +189,14 @@ flex-jc-sp {
     background-image: url(../../dist/images/image-product-desktop.jpg);
   }
 }
-@media (min-width: 93.75em) {
-  .card__image {
-    height: 100%;
-  }
-}
 .card__info {
   padding: 2.2rem 2.3rem 2.4rem 2.5rem;
-  font-size: 1.4rem;
+  font-size: var(--default-font-size);
 }
 @media (min-width: 40.625em) {
   .card__info {
-    padding: 0 3.2rem;
-    padding-top: 3.1rem;
+    padding: 3.1rem 3.2rem 0 3.2rem;
     flex-basis: 50%;
-  }
-}
-@media (min-width: 93.75em) {
-  .card__info {
-    font-size: var(--default-font-size);
   }
 }
 .card__info-tag {
@@ -233,11 +205,6 @@ flex-jc-sp {
   color: var(--color-neutral);
   font-size: 1.2rem;
   font-weight: 500;
-}
-@media (min-width: 93.75em) {
-  .card__info-tag {
-    font-size: calc(var(--default-font-size) * 0.86);
-  }
 }
 .card__info-title {
   margin-top: 1.2rem;
@@ -252,22 +219,11 @@ flex-jc-sp {
     margin-top: 1.9rem;
   }
 }
-@media (min-width: 93.75em) {
-  .card__info-title {
-    margin-top: 1.9rem;
-    font-size: calc(var(--default-font-size) * 2.3);
-  }
-}
 .card__info-description {
   margin-top: 1.65rem;
   line-height: 1.65em;
 }
 @media (min-width: 40.625em) {
-  .card__info-description {
-    margin-top: 2.4rem;
-  }
-}
-@media (min-width: 93.75em) {
   .card__info-description {
     margin-top: 2.4rem;
   }
@@ -283,21 +239,11 @@ flex-jc-sp {
     margin: 2.5rem 0 2.7rem 0;
   }
 }
-@media (min-width: 93.75em) {
-  .card__info-prices {
-    margin: 2.5rem 0 2.7rem 0;
-  }
-}
 .card__info-price--new {
   font-family: var(--font-secondary);
   font-weight: 700;
   font-size: 3.2rem;
   color: var(--color-primary-light);
-}
-@media (min-width: 93.75em) {
-  .card__info-price--new {
-    font-size: calc(var(--default-font-size) * 2.3);
-  }
 }
 .card__info-price--old {
   text-decoration: line-through;
@@ -308,6 +254,7 @@ flex-jc-sp {
     font-size: 1.3rem;
   }
 }
+
 footer {
   width: 100%;
   margin-bottom: var(--default-font-size);
@@ -346,8 +293,6 @@ body {
   .container {
     width: 60rem;
     height: 45rem;
-    max-width: 60rem;
-    max-height: 45rem;
     margin: var(--default-font-size);
     margin-top: calc(4.4 * var(--default-font-size));
   }
@@ -355,16 +300,6 @@ body {
 @media (min-width: 600px) and (max-height: 572px) {
   .container {
     margin-top: var(--default-font-size);
-  }
-}
-@media (min-width: 93.75em) {
-  .container {
-    min-width: 60rem;
-    min-height: 45rem;
-    width: 41.67vw;
-    height: 56.25vh;
-    max-width: none;
-    max-height: none;
   }
 }
 
