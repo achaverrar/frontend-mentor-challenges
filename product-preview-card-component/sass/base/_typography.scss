@@ -8,8 +8,15 @@ body {
 a {
   color: var(--color-primary-light);
   transition: all 250ms ease-in-out;
+  font-weight: 700;
+
   &:hover,
   &:active {
     color: var(--color-primary-dark);
+  }
+
+  &:focus {
+    color: var(--color-primary-light);
+    outline-color: var(--color-primary-light);
   }
 }

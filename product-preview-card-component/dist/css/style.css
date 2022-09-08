@@ -99,50 +99,36 @@ body {
 a {
   color: var(--color-primary-light);
   transition: all 250ms ease-in-out;
+  font-weight: 700;
 }
 a:hover, a:active {
   color: var(--color-primary-dark);
 }
-
-/*
-SHADOWS
-box-shadow:
-
-MARGINS
-u-margin-top-small:
-u-margin-top-medium:
-u-margin-top-large:
-
-u-margin-bottom-small:
-u-margin-bottom-medium:
-u-margin-bottom-large:
-
-TEXT ALIGNMENT
-u-center-text:
-
-FLEXBOX
-flex {
-  display: flex;
+a:focus {
+  color: var(--color-primary-light);
+  outline-color: var(--color-primary-light);
 }
 
-flex-ai-c {
-  align-items: center;
+.visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
 }
 
-flex-jc-c {
-  justify-content: center;
-}
-
-flex-jc-sp {
-  justify-content: space-between;
-*/
 .button {
   background-color: var(--color-primary-light);
   display: flex;
   gap: 0.85em;
   width: 100%;
   justify-content: center;
-  padding: 1.2em;
+  padding: calc(1.2em - 3px);
+  border: 3px solid var(--color-primary-light);
   border-radius: 8px;
   color: var(--color-white);
   transition: all 250ms ease-in-out;
@@ -158,7 +144,14 @@ flex-jc-sp {
 }
 .button:hover, .button:active {
   background-color: var(--color-primary-dark);
+  border: 3px solid var(--color-primary-dark);
   cursor: pointer;
+}
+.button:focus {
+  outline: 2px solid var(--color-primary-light);
+  padding: calc(1.2em - 3px);
+  border: 3px solid var(--color-white);
+  background-color: var(--color-primary-dark);
 }
 
 .card {
@@ -178,7 +171,7 @@ flex-jc-sp {
 .card__image {
   height: 24rem;
   width: 100%;
-  background-image: url(../../dist/images/image-product-mobile.jpg), url(../../dist/images/image-product-mobile.jpg);
+  background-image: url(../../dist/images/image-product-mobile.jpg);
   background-size: cover;
   filter: contrast(1.2) brightness(0.87);
 }

@@ -6,7 +6,8 @@
   gap: 0.85em;
   width: 100%;
   justify-content: center;
-  padding: 1.2em;
+  padding: calc(1.2em - 3px);
+  border: 3px solid var(--color-primary-light);
   border-radius: 8px;
   color: var(--color-white);
   transition: all 250ms ease-in-out;
@@ -23,6 +24,14 @@
   &:hover,
   &:active {
     background-color: var(--color-primary-dark);
+    border: 3px solid var(--color-primary-dark);
     cursor: pointer;
+  }
+
+  &:focus {
+    outline: 2px solid var(--color-primary-light);
+    padding: calc(1.2em - 3px);
+    border: 3px solid var(--color-white);
+    background-color: var(--color-primary-dark);
   }
 }
