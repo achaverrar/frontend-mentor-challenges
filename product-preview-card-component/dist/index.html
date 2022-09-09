@@ -23,7 +23,17 @@
   <body>
     <main class="container">
       <article class="card">
-        <div class="card__image"></div>
+        <picture>
+          <source
+            srcset="images/image-product-desktop.jpg"
+            media="(min-width: 40.625em)"
+          />
+          <img
+            src="images/image-product-mobile.jpg"
+            alt=""
+            class="card__image"
+          />
+        </picture>
         <section class="card__info">
           <span class="card__info-tag">Perfume</span>
           <h1 class="card__info-title">Gabrielle Essence Eau De Parfum</h1>
