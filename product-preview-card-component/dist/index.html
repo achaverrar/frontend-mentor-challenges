@@ -19,18 +19,22 @@
     <link rel="stylesheet" href="css/style.css" />
     <script src="js/script.js" defer></script>
     <title>Frontend Mentor | Product preview card component</title>
+    <meta
+      name="description"
+      content="This is Ayxa Chaverra's solution to one of the Frontend Mentor challenges, implementing accessibility, responsive design and SEO best practices. Check it out!"
+    />
   </head>
   <body>
     <main class="container">
       <article class="card">
-        <picture>
+        <picture aria-hidden="true">
           <source
             srcset="images/image-product-desktop.jpg"
             media="(min-width: 40.625em)"
           />
           <img
             src="images/image-product-mobile.jpg"
-            alt=""
+            alt="A bottle of Gabrielle Essence Eau De Parfum, surrounded by leaf sprigs"
             class="card__image"
           />
         </picture>
