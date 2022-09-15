@@ -9,8 +9,8 @@
     "start": "npm-run-all --parallel watch:sass devserver",
     "compile:sass": "sass sass/main.scss:dist/css/style.comp.css",
     "prefix:css": "postcss --use autoprefixer -b 'last 10 versions' dist/css/style.comp.css -o dist/css/style.prefix.css",
-    "compress:css": "sass dist/css/style.prefix.css dist/css/style.css --output-style compressed",
-    "build:css": "npm-run-all compile:sass concat:css prefix:css compress:css"
+    "compress:css": "sass dist/css/style.prefix.css dist/css/style.css --style compressed",
+    "build:css": "npm-run-all compile:sass prefix:css compress:css"
   },
   "keywords": [],
   "author": "",
