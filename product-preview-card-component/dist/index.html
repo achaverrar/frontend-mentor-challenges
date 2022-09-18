@@ -69,7 +69,7 @@
       }
     </style>
     <link rel="stylesheet" href="css/style.css" />
-    <!-- <script src="js/script.js"></script> -->
+    <script src="js/broken_image.js" defer></script>
     <script>
       if ("fonts" in document) {
         let M_regular = new FontFace(
@@ -115,13 +115,13 @@
   <body>
     <main class="container">
       <article class="card">
-        <picture aria-hidden="true">
+        <picture aria-hidden="true" class="card__image-container">
           <source
             srcset="images/image-product-desktop.jpg"
             media="(min-width: 40.625em)"
           />
           <img
-            src="images/image-product-mobile.jpg"
+            src="image/image-product-mobile.jpg"
             alt="A bottle of Gabrielle Essence Eau De Parfum, surrounded by leaf sprigs"
             class="card__image"
           />
