@@ -15,3 +15,42 @@ Settings for package.json
 "scripts": {
     "compile:sass": "sass --watch sass/main.scss:dist/css/style.css"
   }
+
+  Webpack
+https://webpack.js.org/guides/getting-started/
+  Installing Webpack
+  npm i -D webpack webpack-cli
+
+https://webpack.js.org/guides/development/#using-webpack-dev-server
+https://github.com/jantimon/html-webpack-plugin#options
+  Serve the code automatically
+  npm i -D webpack-dev-server
+  Plugin to handle HTML, use template, generate dist file automatically
+  npm i -D html-webpack-plugin
+
+https://babeljs.io/setup#installation
+  Using BABEL to implement JS backwards compatibility
+  npm i -D babel-loader @babel/core @babel/preset-env
+
+https://webpack.js.org/loaders/#styling
+  Add exports of a module as style to DOM
+  Loads CSS file with resolved imports and returns CSS code
+  Loads and compiles a SASS/SCSS file
+  npm i -D style-loader css-loader sass sass-loader 
+To work with other preprocessors, replace "sass sass-loader" with:
+ -LESS: "less less-loader"
+ -Stylus: "stylus stylus-loader"
+!Important: make sure you use the loaders in the right order: 
+style-loader goes first, then css-loader and sass-loader goes last
+
+To use PostCSS, append in the end:
+ npm i -D postcss postcss-loader postcss-preset-env
+
+https://webpack.js.org/plugins/mini-css-extract-plugin
+ npm i -D mini-css-extract-plugin
+
+https://webpack.js.org/guides/asset-management/#loading-images
+ Import images, vector graphics and fonts
+ npm i -D html-loader
+ npm i -D file-loader
+
