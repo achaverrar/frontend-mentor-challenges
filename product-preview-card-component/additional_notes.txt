@@ -51,6 +51,8 @@ https://webpack.js.org/plugins/mini-css-extract-plugin
 
 https://webpack.js.org/guides/asset-management/#loading-images
  Import images, vector graphics and fonts
- npm i -D html-loader
- npm i -D file-loader
+ Images in the HTML template
+ - Use the plugin to copy the files from the src to the dist folder
+ npm i -D copy-webpack-plugin
+ Background images
 

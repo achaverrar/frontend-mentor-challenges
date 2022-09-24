@@ -1,3 +1,9 @@
+import "./fonts/fraunces-v24-latin-700.woff";
+import "./fonts/fraunces-v24-latin-700.woff2";
+import "./fonts/montserrat-v25-latin-500.woff";
+import "./fonts/montserrat-v25-latin-500.woff2";
+import "./fonts/montserrat-v25-latin-700.woff";
+import "./fonts/montserrat-v25-latin-700.woff2";
 import "./sass/main.scss";
 
 const person = {
