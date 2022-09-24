@@ -1,5 +1,7 @@
 import "./sass/main.scss";
 
+import "./js/broken_image";
+
 const person = {
   firstName: "Ayxa",
   lastName: "Chaverra",

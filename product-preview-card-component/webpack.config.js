@@ -6,9 +6,12 @@ const CopyPlugin = require("copy-webpack-plugin");
 
 module.exports = {
   mode: "production",
-  entry: "./src/index.js",
+  entry: {
+    main: "./src/index.js",
+    font_handler: "./src/js/font_handler.js",
+  },
   output: {
-    filename: "main.js",
+    filename: "js/[name].js",
     path: path.resolve(__dirname, "dist"),
   },
   devServer: {
@@ -59,9 +62,12 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: "./src/index.html",
       filename: "./index.html",
+      chunks: ["main"],
+      //inject: "head",
+      //scriptLoading: "blocking",
     }),
     new MiniCssExtractPlugin({
-      filename: "[name].css",
+      filename: "./css/[name].css",
     }),
     new CopyPlugin({
       patterns: [
