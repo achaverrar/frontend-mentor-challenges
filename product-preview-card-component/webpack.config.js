@@ -3,7 +3,6 @@ const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CopyPlugin = require("copy-webpack-plugin");
-const PreloadWebpackPlugin = require("@vue/preload-webpack-plugin");
 
 module.exports = {
   mode: "production",
@@ -50,6 +49,9 @@ module.exports = {
       {
         test: /\.(woff|woff2|eot|ttf|otf)$/i,
         type: "asset/resource",
+        generator: {
+          filename: "./fonts/[name][contenthash][ext]",
+        },
       },
     ],
   },
@@ -72,12 +74,6 @@ module.exports = {
           to: "fonts",
         }, */
       ],
-    }),
-    new PreloadWebpackPlugin({
-      rel: "preload",
-      as: "font",
-      include: "allAssets",
-      fileWhitelist: [/\.(woff2?|eot|ttf|otf)(\?.*)?$/i],
     }),
   ],
   // Better use for development only
