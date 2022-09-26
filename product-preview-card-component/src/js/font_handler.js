@@ -1,3 +1,10 @@
+// FONT HANDLER
+/*
+  Replaces the fonts in the document
+  Alrhough it is always executed, it is only needed when 
+  the browser doesn't support font-display: swap
+  source: https://www.zachleat.com/web/css-tricks-web-fonts/
+*/
 if ("fonts" in document) {
   var M_regular = new FontFace(
     "Monserrat",

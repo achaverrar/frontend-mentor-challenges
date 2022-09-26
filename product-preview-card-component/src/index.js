@@ -1,2 +1,8 @@
+// Entry point for Webpack
+
+// Styles
 import "./sass/main.scss";
-import "./js/broken_image";
+
+// Scripts
+import "./js/broken_image_handler";
+import "./js/font_handler";

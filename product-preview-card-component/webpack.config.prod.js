@@ -8,12 +8,11 @@ module.exports = {
   mode: "production",
   entry: {
     main: "./src/index.js",
-    font_handler: "./src/js/font_handler.js",
   },
   output: {
     filename: "js/[name].js",
     path: path.resolve(__dirname, "dist"),
-    clean: true,
+    clean: true, // Cleans dist/ every time a bundle is generated
     //assetModuleFilename: "images/[name][ext]",
   },
   devServer: {
@@ -22,6 +21,8 @@ module.exports = {
   module: {
     rules: [
       {
+        // Loads the JS files, minifies them and
+        // prepares them for backwards compatibility
         test: /\.m?js$/,
         exclude: /node_modules/,
         use: {
@@ -41,13 +42,15 @@ module.exports = {
           // "style-loader",
           // Translates CSS into CommonJS
           "css-loader",
-          //
+          // Minifies CSS
           "postcss-loader",
           // Compiles Sass to CSS
           "sass-loader",
         ],
       },
       {
+        // Only needed to load background images and
+        // images imported to the JS files
         test: /\.(png|svg|jpe?g|gif|webp)$/,
         type: "asset/resource",
         generator: {
@@ -64,17 +67,21 @@ module.exports = {
     ],
   },
   plugins: [
+    // Loads and uses the HTML template and stores the result in dist/
     new HtmlWebpackPlugin({
       template: "./src/index.html",
       filename: "./index.html",
-      chunks: ["main"],
+      //chunks: ["main"],
       //favicon: "./src/images/favicon-32x32.png",
       //inject: "head",
       //scriptLoading: "blocking",
     }),
+    // Creates CSS bundled file and stores it in dist/
     new MiniCssExtractPlugin({
       filename: "./css/[name].css",
     }),
+    // Copies images folder from src/ to dist/ so that
+    // the HTML template has access to it
     new CopyPlugin({
       patterns: [
         {
@@ -88,97 +95,4 @@ module.exports = {
       ],
     }),
   ],
-  // Better use for development only
-  // devtool: "source-map",
 };
-
-/*
-const path = require("path");
-
-// PLUGINS
-const webpack = require("webpack");
-const CopyPlugin = require("copy-webpack-plugin");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const { CleanWebpackPlugin } = require("clean-webpack-plugin");
-
-module.exports = {
-  mode: "development", // "production" | "none"
-  entry: {
-    main: "./src/index.js", // where Webpack starts bundling
-  },
-  output: {
-    path: path.resolve(__dirname, "dist"),
-    filename: "[name].[contenthash].js",
-  },
-  module: {
-    rules: [
-      {
-        test: /\.(scss|css)$/,
-        use: [
-          //MiniCssExtractPlugin.loader,
-          "css-loader",
-          "style-loader",
-          "sass-loader",
-        ],
-      },
-      {
-        test: /\.js$/,
-        use: "babel-loader",
-        exclude: /node_modules/,
-      },
-      {
-        test: /\.(png|svg|jpg|jpeg|gif|webp)$/,
-        use: [
-          {
-            loader: "file-loader",
-          },
-        ],
-        type: "asset/resource",
-        options: {
-          esModule: false,
-          name: "src/images/[name].[ext]",
-        },
-      },
-      {
-        test: /\.(woff|woff2)$/,
-        use: {
-          loader: "url-loader",
-          options: {
-            limit: 10000,
-            mimetype: "application/font-woff",
-            name: "[name].[contentHash].[ext]",
-            outputPath: "./assets/fonts/",
-            publicPath: "../assets/fonts/",
-            esModule: false,
-          },
-        },
-      },
-      {
-        test: /\.html$/,
-        use: [
-          {
-            loader: "html-loader",
-          },
-        ],
-      },
-    ],
-  },
-  plugins: [
-    new HtmlWebpackPlugin({
-      inject: true,
-      //title: "Frontend Mentor | Product preview card component",
-      template: "src/index.html",
-      filename: "./index.html",
-    }),
-    new CopyPlugin({
-      patterns: [{ from: "src/index.html" }],
-    }),
-    new MiniCssExtractPlugin({
-      filename: "style/[name].[contentHash].css",
-    }),
-    new CleanWebpackPlugin(),
-    
-  ],
-};
-*/

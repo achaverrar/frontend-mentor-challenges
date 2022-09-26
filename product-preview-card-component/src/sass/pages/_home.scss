@@ -1,3 +1,4 @@
+/* HOME PAGE */
 @use "../abstracts/mixins" as m;
 
 body {
@@ -8,7 +9,9 @@ body {
   align-items: center;
   justify-content: center;
 
-  // max-width: 650px, max-height: 709px
+  /* Fix layout when:
+   max-width: 650px, max-height: 709px
+  */
   @media (max-width: 40.625em) and (max-height: 44.3125em) {
     min-height: 0;
     align-items: stretch;
@@ -16,6 +19,10 @@ body {
   }
 }
 
+/* .container is responsible for:
+  - The size, alignment and position of the card in the layout
+  - The space between the card and the attribution
+*/
 .container {
   display: flex;
   align-items: center;
@@ -32,7 +39,9 @@ body {
     margin-top: calc(4.4 * var(--default-font-size));
   }
 
-  // min-width: 600px, max-height: 572px
+  /* Fix the layout when: 
+    min-width: 600px, max-height: 572px
+  */
   @media (min-width: 37.5em) and (max-height: 35.75em) {
     margin-top: var(--default-font-size);
   }

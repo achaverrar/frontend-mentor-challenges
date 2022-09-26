@@ -1,3 +1,8 @@
+// TYPOGRAPHY
+
+/* 
+  Create and laod fonts 
+*/
 /* fraunces-700 - latin */
 @font-face {
   font-family: "Fraunces";
@@ -33,6 +38,9 @@
   font-display: swap;
 }
 
+/* 
+  Set fonts styles for main elements in the page
+*/
 body {
   font-family: var(--font-primary);
   color: var(--color-neutral);

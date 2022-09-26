@@ -1,3 +1,4 @@
+/* CARD */
 @use "../abstracts/mixins" as m;
 
 .card {
@@ -7,7 +8,9 @@
   height: 100%;
 
   @include m.breakpoint(large) {
-    display: grid; //
+    /* Grid provides the parent more control over its children's 
+    dimensions than flexbox does */
+    display: grid;
     grid-template-columns: 1fr 1fr;
     max-width: none;
     margin: 0;
@@ -17,14 +20,18 @@
     display: block;
     position: relative;
     height: 24rem;
-    //object-fit: cover;
-    //width: 100%;
     filter: contrast(1.2) brightness(0.87);
 
     @include m.breakpoint(large) {
-      min-height: 45rem; //
+      height: 100%;
+      min-height: 45rem;
     }
 
+    /* 
+      Pseudo-elements of img elements only show up when the link to the
+      image is broken
+      More info: https://bitsofco.de/styling-broken-images/
+     */
     &::after {
       content: "Sorry, we couldn't find the image of the product 😥";
       display: flex;
@@ -46,7 +53,6 @@
 
     @include m.breakpoint(large) {
       padding: 3.1rem 3.2rem 0 3.2rem;
-      flex-basis: 50%; //
     }
 
     &-tag {
@@ -66,7 +72,7 @@
       line-height: 1em;
 
       @include m.breakpoint(large) {
-        margin-top: 1.9rem; //
+        margin-top: 1.9rem;
       }
     }
 
@@ -75,7 +81,7 @@
       line-height: 1.65em;
 
       @include m.breakpoint(large) {
-        margin-top: 2.4rem; //
+        margin-top: 2.4rem;
       }
     }
 

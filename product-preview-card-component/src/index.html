@@ -10,6 +10,7 @@
       sizes="32x32"
       href="./images/favicon-32x32.png"
     />
+    <!-- The link tags tell the browser to prioritize loading the fonts -->
     <link
       rel="stylesheet preload prefetch"
       href="fonts/fraunces-v24-latin-700.woff2"
@@ -31,82 +32,6 @@
       type="font/woff2"
       crossorigin
     />
-    <!-- <style>
-      /* fraunces-700 - latin */
-      @font-face {
-        font-family: "Fraunces";
-        font-style: normal;
-        font-weight: 700;
-        src: local(""),
-          url("fonts/fraunces-v24-latin-700.woff2") format("woff2"),
-          /* Chrome 26+, Opera 23+, Firefox 39+ */
-            url("fonts/fraunces-v24-latin-700.woff") format("woff"); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
-        font-display: swap;
-      }
-
-      /* montserrat-500 - latin */
-      @font-face {
-        font-family: "Montserrat";
-        font-style: normal;
-        font-weight: 500;
-        src: local(""),
-          url("fonts/montserrat-v25-latin-500.woff2") format("woff2"),
-          /* Chrome 26+, Opera 23+, Firefox 39+ */
-            url("fonts/montserrat-v25-latin-500.woff") format("woff"); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
-        font-display: swap;
-      }
-
-      /* montserrat-700 - latin */
-      @font-face {
-        font-family: "Montserrat";
-        font-style: normal;
-        font-weight: 700;
-        src: local(""),
-          url("fonts/montserrat-v25-latin-700.woff2") format("woff2"),
-          /* Chrome 26+, Opera 23+, Firefox 39+ */
-            url("fonts/montserrat-v25-latin-700.woff") format("woff"); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
-        font-display: swap;
-      }
-    </style> -->
-    <!-- <link rel="stylesheet" href="css/style.css" />
-    <script src="js/broken_image.js" defer></script> -->
-    <!-- <script>
-      if ("fonts" in document) {
-        let M_regular = new FontFace(
-          "Monserrat",
-          "url(fonts/montserrat-v25-latin-500.woff2) format('woff2'), url(fonts/montserrat-v25-latin-500.woff) format('woff')"
-        );
-        let M_bold = new FontFace(
-          "Monserrat",
-          "url(fonts/montserrat-v25-latin-700.woff2) format('woff2'), url(fonts/montserrat-v25-latin-700.woff) format('woff')",
-          { weight: "700" }
-        );
-        let F_bold = new FontFace(
-          "Fraunces",
-          "url(fonts/fraunces-v24-latin-700.woff2) format('woff2'), url(fonts/fraunces-v24-latin-700.woff) format('woff')",
-          { weight: "700" }
-        );
-
-        Promise.all([M_regular.load(), M_bold.load(), F_bold.load()]).then(
-          function (fonts) {
-            fonts.forEach(function (font) {
-              document.fonts.add(font);
-            });
-          }
-        );
-      }
-    </script>
-    <script>
-      if (!("fonts" in document) && "head" in document) {
-        // Awkwardly dump the second stage @font-face blocks in the head
-        let style = document.createElement("style");
-        // Note: Edge supports WOFF2
-        style.innerHTML =
-          "@font-face { font-family: Monserrat; src: url(fonts/montserrat-v25-latin-500.woff2) format('woff2'), url(fonts/montserrat-v25-latin-500.woff) format('woff'); } @font-face { font-family: Monserrat; font-weight: 700; src: url(fonts/montserrat-v25-latin-500.woff2) format('woff2'), url(fonts/montserrat-v25-latin-500.woff) format('woff'); } @font-face { font-family: Fraunces; font-weight: 700; src: url(fonts/fraunces-v24-latin-700.woff2) format('woff2'), url(fonts/fraunces-v24-latin-700.woff) format('woff'); }";
-        document.head.appendChild(style);
-      }
-    </script> -->
-    <script src="./js/font_handler.js"></script>
     <title>Frontend Mentor | Product preview card component</title>
     <meta
       name="description"
@@ -116,11 +41,15 @@
   <body>
     <main class="container">
       <article class="card">
-        <picture aria-hidden="true" class="card__bridge-to-image">
+        <picture aria-hidden="true" id="image-server">
+          <!-- The picture tag only helps serve the right image to each screen size, but has no styling purposes -->
+          <!-- aria-hidden=true because the image of the product can be considered decorative -->
           <source
             srcset="images/image-product-desktop.jpg"
             media="(min-width: 40.625em)"
           />
+          <!-- The alt text was added only to enhance SEO, it's not read by assistive devices. -->
+          <!-- If the image can't be loaded, the alt text is used to inform the user -->
           <img
             src="images/image-product-mobile.jpg"
             alt="A bottle of Gabrielle Essence Eau De Parfum, surrounded by leaf sprigs"
@@ -134,10 +63,12 @@
             A floral, solar and voluptuous interpretation composed by Olivier
             Polge, Perfumer-Creator for the House of CHANEL.
           </p>
+          <!-- This text is hidden from assistive devices, but visible to sighted users -->
           <p class="card__info-prices" aria-hidden="true">
             <span class="card__info-price--new"><strong>$149.99</strong></span>
             <s class="card__info-price--old">$169.99</s>
           </p>
+          <!-- This text is hidden from sighted users, but read by assistive devices -->
           <span class="visually-hidden">For $149.99 instead of $169.99</span>
           <button class="button">
             <svg width="15" height="16" xmlns="http://www.w3.org/2000/svg">
