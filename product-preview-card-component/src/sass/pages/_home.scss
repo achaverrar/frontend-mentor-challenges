@@ -20,12 +20,14 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 100%;
+  max-width: 34.3rem;
+  margin: 2.8rem 1.6rem;
   height: 100%;
 
   @include m.breakpoint(large) {
     width: 60rem;
     height: 45rem;
+    max-width: none;
     margin: var(--default-font-size);
     margin-top: calc(4.4 * var(--default-font-size));
   }

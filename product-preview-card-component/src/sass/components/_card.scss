@@ -4,26 +4,21 @@
   background-color: var(--color-white);
   border-radius: 8px;
   overflow: hidden;
-  margin: 2.8rem 1.6rem;
-  max-width: 343px;
   height: 100%;
 
   @include m.breakpoint(large) {
-    display: flex; //
+    display: grid; //
+    grid-template-columns: 1fr 1fr;
     max-width: none;
     margin: 0;
-  }
-
-  &__image-container {
-    flex-basis: 50%; //
   }
 
   &__image {
     display: block;
     position: relative;
     height: 24rem;
-    object-fit: cover;
-    width: 100%;
+    //object-fit: cover;
+    //width: 100%;
     filter: contrast(1.2) brightness(0.87);
 
     @include m.breakpoint(large) {
