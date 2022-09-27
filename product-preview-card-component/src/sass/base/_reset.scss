@@ -80,6 +80,14 @@ p a {
 }
 
 /* Text tags */
+%text-styles {
+  font-weight: inherit;
+  font-family: inherit;
+  font-style: inherit;
+  text-decoration: none;
+  color: inherit;
+}
+
 h1,
 h2,
 h3,
@@ -88,19 +96,9 @@ h5,
 h6,
 p,
 span,
-a,
-strong,
-blockquote,
-i,
-b,
-u,
-em {
-  font-weight: inherit;
-  font-family: inherit;
-  font-style: inherit;
+a {
+  @extend %text-styles;
   font-size: var(--default-font-size);
-  text-decoration: none;
-  color: inherit;
 }
 
 strong,
@@ -109,6 +107,7 @@ i,
 b,
 u,
 em {
+  @extend %text-styles;
   font-size: inherit;
 }
 
