@@ -1,7 +1,44 @@
 # Guide to set up Webpack 5 for your (HTML, Sass/CSS and JavaScript) project
 
+This a guide on how to set up Webpack 5, based on what I learned through tons of research and trial and error, and finally worked on my project, in 2022. I found many outdated resources, even about Webpack 5, and some that just didn't work or were mostly focused on React.js. So, hopefully this will help someone else.
+
+Every read, comment, question, correction and suggestion is highly appreciated. Thank you,
+
+[Ayxa Chaverra R.](https://github.com/achaverrar)
+
 _\[**Note 1**] As of September of 2022, I've never used JavaScript frameworks, so that's not included in this guide. This might change in the near future._
 _\[**Note 2**] I'll use Visual Studio Code editor as well as NPM for this guide._
+
+---
+
+## Table of contents
+
+- [Basic Setup](#basic-setup)
+- [Additional settings](#additional-settings)
+  - [Add a Live Server](#add-a-live-server)
+  - [Integrate external resources](#integrate-external-resources)
+    - [/(Java)?(Scripts\*)+/gi](#javascriptsgi)
+      - [Multiple modules into 1 bundle](#multiple-modules-into-1-bundle)
+      - [Multiple modules into multiple bundles](#multiple-modules-into-multiple-bundles)
+    - [Stylesheets](#stylesheets)
+      - [CSS](#css)
+      - [Note on Source Maps](#note-on-source-maps)
+      - [Sass and other CSS frameworks](#sass-and-other-css-frameworks)
+    - [Multimedia resources (images, videos, SVGs, etc.)](#multimedia-resources-images-videos-svgs-etc)
+      - [Multimedia resources from your HTML template](#multimedia-resources-from-your-html-template)
+      - [Multimedia resources from JavaScript and/or Sass/CSS](#multimedia-resources-from-javascript-andor-sasscss)
+    - [Fonts](#fonts)
+  - [Web Optimizetion](#web-optimizetion)
+    - [Use different settings for development and production](#use-different-settings-for-development-and-production)
+    - [Minify your code (and handle source-maps)](#minify-your-code-and-handle-source-maps)
+    - [Transpile Your JavaScript (Make It Old-Browsers-Friendly)](#transpile-your-javascript-make-it-old-browsers-friendly)
+    - [Autoprefix Your CSS (Make it All/Most-Browsers-Friendly)](#autoprefix-your-css-make-it-allmost-browsers-friendly)
+  - [Deploy your code (using Netlify)](#deploy-your-code-using-netlify)
+- [Useful Resources](#useful-resources)
+
+---
+
+## Basic Setup
 
 1.  Create a new folder for your project, let's say `webpack-setup`
 2.  Open the folder using VS Code
@@ -88,7 +125,7 @@ _\[**Note 2**] I'll use Visual Studio Code editor as well as NPM for this guide.
     };
     ```
 
-10. Add these lines to your `scripts` in package.json:
+10. Add these lines to your `"scripts"` in `package.json`:
 
     ```json
     "scripts" : {
@@ -172,20 +209,24 @@ _\[**Note 2**] I'll use Visual Studio Code editor as well as NPM for this guide.
     <!-- Even more HTML code from your template -->
     ```
 
-**\[Optional Checkpoint]:** run the `watch` script in your terminal and then open your `index.js` file. Add the following line to it:
+    **\[Optional Checkpoint]:** run the `watch` script in your terminal and then open your `index.js` file. Add the following line to it:
 
-```javascript
-/* index.js */
-console.log("The watch script is working, yaaaaay!!");
-```
+    ```javascript
+    /* index.js */
+    console.log("The watch script is working, yaaaaay!!");
+    ```
 
-Save the file, and then open the `index.html` file in your favorite browser. You should see a message in the console of the developer tools (press F12 or right click on the page, and then left click on "Inspect"). To stop watching type \[ Ctrl ] + \[ C ] in the terminal, and then enter `y` (for Yes).
+    Save the file, and then open the `index.html` file in your favorite browser. You should see a message in the console of the developer tools (press \[ F12 ] or right click on the page, and then left click on "Inspect"). To stop watching type \[ Ctrl ] + \[ C ] in the terminal, and then enter `y` (for Yes).
 
-14. Congratulations, you've just finished the basic set up. From now on, the rest of instructions depend on the specific needs of your project, so feel free to skip the tasks that don't apply in your case.
+13. Congratulations, you've just finished the basic set up. From now on, the rest of instructions depend on the specific needs of your project, so feel free to skip the tasks that don't apply in your case.
+
+[Go back to the Table of contents 🔝](#table-of-contents)
+
+## Additional settings
 
 I added some optional checkpoints here, but when I don't, you're still encouraged to check your progress (at least) at the end of the section to make sure you're still on the right track.
 
-## Add a Live Server
+### Add a Live Server
 
 1. Run `npm i -D webpack-dev-server` to install Webpack live server.
 2. Add this script to your `package.json`:
@@ -198,11 +239,257 @@ I added some optional checkpoints here, but when I don't, you're still encourage
 
    **\[Optional Checkpoint]:** run the "serve" script in your terminal. Your default browser should open a tab with your project automatically. Check it is running on a local host and that the message you set up before is showing in the console.
 
-## Integrate external resources
+[Go back to the Table of contents 🔝](#table-of-contents)
 
-### Multimedia resources (images, videos, SVGs, etc.)
+### Integrate external resources
 
-#### Multimedia resources from your HTML template
+#### /(Java)?(Scripts\*)+/gi
+
+##### Multiple modules into 1 bundle
+
+You can combine multiple JavaScript files into 1 entry point by simply importing them into the entry point. Let's say you have the following file structure:
+
+```
+  src/
+  |   |- scripts/
+  |         |- script1.js
+  |         |- script2.js
+  |- index.js
+```
+
+Then you can create a single JavaScript script for production, by simply adding this code to your `index.js` file:
+
+```javascript
+/* index.js */
+import "./scripts/script1";
+import "./scripts/script2";
+```
+
+This way, if you run the build command, you'll end up with a single JavaScript file (namely `main.js`) in your distribution folder, which contains the code from all `script1.js`, `script2.js` and `index.js`.
+
+[Go back to the Table of contents 🔝](#table-of-contents)
+
+##### Multiple modules into multiple bundles
+
+You can achieve this by creating more than 1 entry point. Let's say you have the following file structure:
+
+```
+  src/
+  |   |- scripts/
+  |         |- script1.js
+  |         |- script2.js
+  |         |- script3.js
+  |- index1.js
+  |- index2.js
+```
+
+And you want to create two bundles: one contains the code from `script1.js`, `script2.js` and `index1.js`, and the other contains the code from `script3.js` and `index2.js`. Then, you should use `index1.js` and `index2.js` as the entry points, and import the corresponding modules into each of them. This way:
+
+```javascript
+/* index1.js */
+import "./scripts/script1";
+import "./scripts/script2";
+/* index2.js */
+import "./scripts/script3";
+```
+
+Then, you have to tell Webpack you're using those two entry points. To do that, open your `webpack.config.js` and modify the `module.exports.entry` object:
+
+```javascript
+/* webpack.config.js */
+module.exports = {
+  /* mode */
+  entry: {
+    module1: "./src/index.js", // You can change module1 for whatever name you want
+    module2: "./src/index2.js", // You can change module2 for whatever name you want
+  },
+  /* output, module, plugins, devtool */
+};
+```
+
+If you run the build script in your terminal, you'll see the two bundles as `module1.js` and `module2.js` in your distribution folder, with the expected code. As well as their respective script tags in `index.html`.
+
+[Go back to the Table of contents 🔝](#table-of-contents)
+
+#### Stylesheets
+
+Just like with multimedia resources, all hardcoded code in your template needs no further settings. But when it comes to stylesheets and scripts, I encourage you to use Webpack to incorporate them into your project, so that you can seize all the bundler can do for you.
+
+To achieve this, you'll need some loaders (and a plugin):
+
+##### CSS
+
+1. Run `npm i -D mini-css-extract-plugin css-loader`
+2. Add these lines to your settings file:
+
+```javascript
+/* webpack.config.js */
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+module.exports = {
+  /* mode, entry, output */
+  module: {
+    rules: [
+      /* Each object in this array contains the rules of how to
+      handle a especific type of file */
+      {
+        test: /\.css$/i,
+        /* These regexp tell Webpack what file format corresponds
+        to this rule */
+        use: [
+          // THE LOADERS MUST GO IN THIS ORDER
+          MiniCssExtractPlugin.loader,
+          /* Creates a CSS file per JS file which requires CSS */
+          "css-loader",
+          /* Loads CSS file with resolved imports and returns CSS code */
+        ],
+        /* The loaders will be in charge of recognize and handle any
+        imported file that matches the given format */
+      },
+    ],
+  },
+  plugins: [
+    /* HTML Webpack plugin, etc. */
+    new MiniCssExtractPlugin({
+      filename: "./styles/[name].css",
+      /* This is the relative path to your distribution folder where 
+      your bundled CSS file will be stored */
+    }),
+  ],
+  devtool: "source-map",
+};
+```
+
+---
+
+###### Note on Source Maps
+
+In case you're wondering what are those so-called source maps, and what that property does. I'll show you what your bundled CSS looks like in Mozilla Firefox, if you don't use them:
+![Stylesheet in Firefox'es Style Editor, without source maps](./learnings/no_source-maps.jpg)
+
+And now I'll show you what it looks like, if you do use them:
+![Stylesheet in Firefox'es Style Editor, using source maps](./learnings/with_source-maps.jpg)
+
+When you use source-maps (for your stylesheets or scripts) you can see the connections between your compiled files and the source files you used to produce them, and that help you track errors more easily. Source maps are of great help in the development process.
+
+If you want to enable/disable them on Google Chrome, open the Developer Tools window, press [ F1 ] or click on the button with the gear icon (Settings), scroll down until you reach the "Sources" section, there's a check item that reads "Enable CSS source maps", you can (un)check it, depending on your needs.
+
+---
+
+3. Import your stylesheets into your entry point (namely `index.js`) like this:
+
+```javascript
+/* index.js */
+import "./styles/style.css"; // Relative path to src/
+/* some JS code */
+```
+
+**\[Optional Checkpoint]:** If you don't have a stylesheet in your development folder, let's create one following this file structure:
+
+```
+Webpack_Setup/
+|
+|– src/
+|   |– styles/
+|         |- style.css    <--- This is new
+|
+```
+
+Now, let's add some style that'll work as an irrefutable proof that the stylesheet is being properly loaded:
+
+```css
+body {
+  background-image: linear-gradient(to right, #f00, #00f);
+}
+```
+
+Run the build script and you should notice there's a new folder (and file) in your distribution folder:
+
+```
+  dist/
+  |– src/
+  |   |– styles/
+  |         |- style.css        <--- This is new
+  |         |- style.css.map    <--- This is new
+  |
+```
+
+Besides, if you open your `index.html` file, you should notice there's a `<link>` tag to your `main.css` file, just like this:
+
+```html
+<!-- index.html -->
+<head>
+  <link href="./styles/main.css" rel="stylesheet" />
+</head>
+```
+
+[Go back to the Table of contents 🔝](#table-of-contents)
+
+##### Sass and other CSS frameworks
+
+If you want to compile your Sass(LESS/Stylus) files using Webpack and integrate the resulting CSS code into your project, you'll need to install the corresponding loaders IN ADDITION to what those needed for CSS. These are the steps you should follow:
+
+1. If you installed the loaders for CSS, run `npm i -D sass sass-loader`. If not, run `npm i -D mini-css-extract-plugin css-loader sass sass-loader`.
+   \[Note]: If you're not using Sass, but other framework, replace `sass sass-loader` with
+   - `less less-loader` for LESS, or
+   - `stylus stylus-loader` for Stylus,
+     in the command.
+2. Replace the rule for the CSS loaders and make sure you have the corresponding settings for your Mini CSS Extract plugin (which don't vary from those for CSS stylesheets):
+
+```javascript
+/* webpack.config.js */
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+module.exports = {
+  /* mode, entry, output */
+  module: {
+    rules: [
+      {
+        test: /\.s?[ac]ss$/i, // or /\.(css|s[ac]ss)$/i
+        /*
+          If you're not going to import CSS files,
+          But only Sass files, you can use:
+          test: /\.s[ac]ss$/i,
+          For Stylus:
+          test: /\.styl$/i
+          For LESS:
+          test: /\.less$/i,
+         */
+        use: [
+          // THE LOADERS MUST GO IN THIS ORDER
+          MiniCssExtractPlugin.loader,
+          /* Creates a CSS file per JS file which requires CSS */
+          "css-loader",
+          /* Loads CSS file with resolved imports and returns CSS code */
+          "sass-loader",
+          /* Compiles Sass to CSS */
+        ],
+      },
+    ],
+  },
+  plugins: [
+    /* HTML Webpack plugin, etc. */
+    new MiniCssExtractPlugin({
+      filename: "./styles/[name].css",
+      /* This is the relative path to your distribution folder where
+      your bundled CSS file will be stored */
+    }),
+  ],
+  devtool: "source-map",
+};
+```
+
+3. Import your stylesheets into your entry point (namely `index.js`) like this:
+
+```javascript
+/* index.js */
+import "./styles/main.scss"; // Relative path to src/
+/* some JS code */
+```
+
+[Go back to the Table of contents 🔝](#table-of-contents)
+
+#### Multimedia resources (images, videos, SVGs, etc.)
+
+##### Multimedia resources from your HTML template
 
 If you copy the code within an SVG file (an `<svg>` tag with `<path>` tags inside) into your `template.html`, Webpack will keep it as it is into your `index.html` for production. And that's all you have to do in that case, because that code is enough for the browser to render your picture, without having to look for any external file.
 
@@ -262,7 +549,9 @@ Then run the build script in your terminal, and verify the above code is also pr
       |-  index.html
     ```
 
-#### Multimedia resources from JavaScript and/or Sass/CSS
+[Go back to the Table of contents 🔝](#table-of-contents)
+
+##### Multimedia resources from JavaScript and/or Sass/CSS
 
 If you're importing or referecing these files via JavaScript modules or you're using background images in your stylesheets, then you have to use a different approach.
 
@@ -297,7 +586,7 @@ module.exports = {
 },
 ```
 
-**\[Optional Checkpoint]:**
+[Go back to the Table of contents 🔝](#table-of-contents)
 
 #### Fonts
 
@@ -358,67 +647,233 @@ On the other hand, if you're loading them using your stylesheet or JavaScript, t
     },
     ```
 
-#### Stylesheets
+[Go back to the Table of contents 🔝](#table-of-contents)
 
-Just like with multimedia resources, all hardcoded code in your template needs no further settings. But when it comes to stylesheets and scripts, I encourage you to use Webpack to incorporate them into your project, so that you can seize all the bundler can do for you.
+### Web Optimizetion
 
-To achieve this, you'll need some loaders (and a plugin):
+Besides the "development" mode, Webpack has a "production" mode that does some optimization tasks automatically, like minifying your HTML, CSS and JavaScript code. These tasks usually take some more time to complete and they're not necessary while developing, so you'll probably like to have a file with the settings for development and another file with your settings for production. Here's how:
 
-##### CSS
+#### Use different settings for development and production
 
-1. Run `npm i -D style-loader css-loader mini-css-extract-plugin`
-2. Add these lines to your settings file:
+1. Duplicate your `webpack.config.js` and assign to each a name related to its new role. For this guide, I'll call them `webpack.config.dev.js` and `webpack.config.prod.js`.
+2. Replace your scripts in `package.json` with the following:
 
-```javascript
-/* webpack.config.js */
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-module.exports = {
-  /* mode, entry, output */
-  module: {
-    rules: [
-      {
-        test: /\.css$/i,
-        use: [
-          // THE LOADERS MUST GO IN THIS ORDER
-          MiniCssExtractPlugin.loader,
-          /* Creates a CSS file per JS file which requires CSS */
-          "css-loader",
-          /* Loads CSS file with resolved imports and returns CSS code */
-        ],
-      },
-    ],
-  },
-  plugins: [
-    /* HTML Webpack plugin, etc. */
+```json
+"scripts": {
+  "dev": "webpack --config webpack.config.dev.js", // This is the "build" for development mode
+  "build": "webpack --config webpack.config.prod.js", // This is the "build" for production mode
+  "watch": "webpack --watch --config webpack.config.dev.js", // This will be triggering builds whenever it detects a change in your development files, and for that, it will use the development settings.
+  "serve": "webpack-dev-server --open --config webpack.config.prod.js" // This will launch a live server for your distribution files, using the production settings
+}
+```
+
+\[Note]: If you'd like to use different settings for any of those scripts, simply switch between "prod" and "dev".
+
+3. Modify your development settings:
+
+   You should know that **you can use either the `mini-css-extract-plugin` or the `style-loader` to integrate your styles into your project.** Then why did I suggest you to install the `mini-css-extract-plugin` instead, and why am I even mentioning the `style-loader` now?
+
+   The main difference between those two is that `mini-css-extract-plugin` will create and link external CSS files for your styles, whereas `style-loader` will use your JavaScript bundles to append your styles into your `index.html` as inline styles, which speeds up the build process, and hence makes it a great fit for development, but a terrible one for production.
+
+   That said, it doesn't make sense to use them together, and you shouldn't. Now you can decide whether to replace the Mini CSS Webpack plugin with the `style-loader` in your development settings. Either way, I'll show you how to do it:
+
+   - Open your `webpack.config.dev.js`
+   - Erase all trace of the Mini CSS Webpack plugin, namely:
+     1. Erase this line (storing the module in a constant):
+
+   ```javascript
+   /* webpack.config.dev.js */
+   const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+   ```
+
+   2. Replace these lines:
+
+   ```javascript
+      MiniCssExtractPlugin.loader,
+      /* Creates a CSS file per JS file which requires CSS */
+   ```
+
+   With these ones:
+
+   ```javascript
+      "style-loader",
+      /* Loads the CSS as inline styles into your `index.html`
+      using JavaScript. */
+      /* Skip it if you're using MiniCssExtractPlugin */
+   ```
+
+   3. Erase these lines (plugin settings):
+
+   ```javascript
+   /* webpack.config.dev.js */
     new MiniCssExtractPlugin({
       filename: "./styles/[name].css",
-      /* This is the relative path to your distribution folder where 
+      /* This is the relative path to your distribution folder where
       your bundled CSS file will be stored */
     }),
-  ],
-};
-```
+   ```
 
-3. Import your stylesheets into your entry point (namely `index.js`) like this:
-
-```javascript
-/* index.js */
-import "./styles/style.css"; // Relative path to src/
-/* some JS code */
-```
-
-**\[Optional Checkpoint]:** If you don't have a stylesheet in your development folder, let's create one following this file structure:
+**\[Optional Checkpoint]:** run the dev script in your terminal, and you should notice this change in your file structure:
 
 ```
 Webpack_Setup/
 |
 |– src/
-|   |– styles/
-|         |- style.css    <--- This is new
+|   |– styles/                <--- This whole folder is gone
+|         |- style.css        <--- Bye, my friend!
+|         |- style.css.map    <--- Goodbye, you, too!
 |
 ```
 
-Now, let's add some style that'll work as an irrefutable proof that the stylesheet is being properly loaded:
+And if you open your `index.html` in your editor, you'll notice there's no sign of any `<link>` to your (now non-existent) CSS files. If you open it in your browser, you'll see somehow your styles are still being applied! It's ~~magic!~~ JavaScript appending CSS as inline styles in the `<head>` of your document!
+
+[Go back to the Table of contents 🔝](#table-of-contents)
+
+4. Modify your production settings, or:
+
+#### Minify your code (and handle source-maps)
+
+- Change the mode from "development" to "production". Like so:
+
+```javascript
+/* webpack.config.prod.js */
+module.exports = {
+  mode: "production",
+  /* the rest of your settings */
+};
+```
+
+**\[Optional Checkpoint]:** run the build script in your terminal, open your files for production (`index.html`, `main.js`, `style.css`) and amaze at how all your millions and billions and tons of beautiful lines of code have turned into an intelligible and convoluted single line of code that will make your page's performance happier.
+
+- This step is optional: we're removing the source maps for production. If you checked the section on CSS and CSS frameworks, you'll have a feeling all we have to do is to find and ERASE this line from your `webpack.config.prod.js`:
+
+```javascript
+/* webpack.config.prod.js */
+/* This line is by the end of your module.exports object */
+devtool: "source-map", /* Bye, my friend! */
+```
+
+[Go back to the Table of contents 🔝](#table-of-contents)
+
+#### Transpile Your JavaScript (Make It Old-Browsers-Friendly)
+
+For this task, you'll need Babel.
+
+1. Run `npm i -D babel-loader @babel/core @babel/preset-env` in your terminal.
+   \[Note]: Here, `babel-loader` is the loader we set up in Webpack to recognize and parse the JavaScript files, `@babel/core` gathers the tools Babel needs to transpile your code, and `@babel/preset-env` is what tells Babel how much backwards compatible the final code should be.
+2. Add the following object to the `module.exports.module.rules` array in your `webpack.config.prod.js` (You can add it to your development settings, too, if you want):
+
+   ```javascript
+   {
+     test: /\.js$/,
+     exclude: /node_modules/,
+     /* This prevent Babel from messing up with the
+     code from the external packages you install */
+     use: {
+       loader: "babel-loader",
+     /* Loads and transpiles the JavaScript files */
+       options: {
+         presets: ["@babel/preset-env"],
+       },
+     },
+   },
+   ```
+
+3. Create a file called `.browserslistrc` in your root, this way:
+
+   ```
+   Webpack_Setup/
+   |
+   |– src/
+   |– dist/
+   |
+   |– .browserslistrc   <-- This is new
+   ```
+
+And add your settings for browser support in it. For example:
+
+```
+last 5 years
+>1%
+not dead
+```
+
+You can check [this site](https://browsersl.ist/) for more information on how to specify your settings.
+
+**\[Optional Checkpoint]:** Add these lines after the import statements in your entry point, namely `index.js`:
+
+```javascript
+/* import statements */
+const ALPHABET_STR = "ABDCEFGHIJKLMNOPQRSTUVWXYZ";
+const alphabet_arr = ALPHABET_STR.split("").map((letter) =>
+  letter.toLowerCase()
+);
+console.log(alphabet_arr.join(""));
+```
+
+Then, set your brower support to cover the last 10 years. By adding `last 5 years` to your `.browserslistrc` (or modifying any similar line in the file).
+
+Next, run the build script in your terminal and verify the following code is (within that long line of JavaScript code) in your resulting bundle:
+
+```javascript
+/* main.js */
+!(function () {
+  "use strict";
+  var o = "ABDCEFGHIJKLMNOPQRSTUVWXYZ".split("").map(function (o) {
+    return o.toLowerCase();
+  });
+  console.log(o.join(""));
+})();
+```
+
+[Go back to the Table of contents 🔝](#table-of-contents)
+
+#### Autoprefix Your CSS (Make it All/Most-Browsers-Friendly)
+
+For this task, you'll need autoprefixer (which is a PostCSS plugin). Since PostCSS has [some other nice plugins you'll love](https://github.com/postcss/postcss/blob/main/docs/plugins.md), we'll install the whole thing and not only its autoprefixer. So, welcome to the future, welcome to PostCSS:
+
+1. Run `npm i -D postcss postcss-loader postcss-preset-env` in your terminal. Just like with Babel, you're installing PostCSS, its loader for Webpack, and the settings that will make your code as compatible as needed, depending on your `.browserslistrc`.
+
+2. Add this line of code `"postcss-loader",` to your rules to handle styles in your `webpack.config.prod.js`, right after your CSS loader, so that your whole rule looks like this:
+
+   ```javascript
+   {
+     test: /\.s?[ac]ss$/i,
+     use: [
+       // THE LOADERS MUST GO IN THIS ORDER
+       MiniCssExtractPlugin.loader,
+       /* Creates a CSS file per JS file which requires CSS */
+       "css-loader",
+       /* Loads CSS file with resolved imports and returns CSS code */
+       "postcss-loader",
+       /* Loads and transforms a CSS/SSS file using PostCSS */
+       "sass-loader",
+       /* Compiles Sass to CSS */
+     ],
+   },
+   ```
+
+3. Create a file called `postcss.config.js` in your root:
+
+   ```
+   Webpack_Setup/
+   |
+   |– src/
+   |– dist/
+   |
+   |– postcss.config.js   <-- This is new
+   ```
+
+   And add the following lines to it:
+
+   ```javascript
+   /* postcss.config.js */
+   module.exports = {
+     plugins: ["postcss-preset-env"],
+   };
+   ```
+
+**\[Optional Checkpoint]:** If you support the last 10 years in your `.browserslistrc`, these lines of CSS in your `style.scss` or your `style.css`:
 
 ```css
 body {
@@ -426,193 +881,83 @@ body {
 }
 ```
 
-Run the build script and you should notice there's a new folder (and file) in your distribution folder:
+Should turn into the following styles (somewhere within that long line of CSS code) in your `main.css`:
 
-```
-  dist/
-  |   |- styles/
-  |         |- main.css   <--- This is new
-  |
-```
-
-Besides, if you open your `index.html` file, you should notice there's a `<link>` tag to your `main.css` file, just like this:
-
-```html
-<!-- index.html -->
-<head>
-  <link href="./styles/main.css" rel="stylesheet" />
-</head>
+```css
+body {
+  background-image: -webkit-gradient(
+    linear,
+    left top,
+    right top,
+    from(#f00),
+    to(#00f)
+  );
+  background-image: -webkit-linear-gradient(left, #f00, #00f);
+  background-image: linear-gradient(to right, #f00, #00f);
+}
 ```
 
-##### Sass and other CSS frameworks
+### Deploy your code (using Netlify)
 
-If you want to compile your Sass(LESS/Stylus) files using Webpack and integrate the resulting CSS code into your project, you'll need to install the corresponding loaders IN ADDITION to what those needed for CSS. These are the steps you should follow:
+I'm assuming you have a Github and a Netlify account, and that you've already uploaded your code to an online repository.
+**\[Note]:** When you do, know that you DON'T NEED to upload your distribution folder, since it can be generated using your files for development (namely, `src/`).
 
-1. If you installed the loaders for CSS, run `npm i -D sass sass-loader`. If not, run `npm i -D style-loader css-loader mini-css-extract-plugin sass sass-loader`.
-   \[Note]: If you're not using Sass, but other framework, replace `sass sass-loader` with
-   - `less less-loader` for LESS, or
-   - `stylus stylus-loader` for Stylus,
-     in the command.
-2. Replace the rule for the CSS loaders and make sure you have the corresponding settings for your Mini CSS Extract plugin (which don't vary from those for CSS stylesheets):
+1. Create a file called `netlify.toml` in your root
+   ```
+   Webpack_Setup/
+   |
+   |– src/
+   |– dist/
+   |
+   |– netlify.toml   <-- This is new
+   ```
+2. Add these lines to your new file:
 
-```javascript
-/* webpack.config.js */
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-module.exports = {
-  /* mode, entry, output */
-  module: {
-    rules: [
-      {
-        test: /\.s?[ac]ss$/i, // or /\.(css|s[ac]ss)$/i
-        /* 
-          If you're not going to import CSS files,
-          But only Sass files, you can use:
-          test: /\.s[ac]ss$/i,
-          For Stylus:
-          test: /\.styl$/i
-          For LESS:
-          test: /\.less$/i,
-         */
-        use: [
-          // THE LOADERS MUST GO IN THIS ORDER
-          MiniCssExtractPlugin.loader,
-          /* Creates a CSS file per JS file which requires CSS */
-          "css-loader",
-          /* Loads CSS file with resolved imports and returns CSS code */
-          "sass-loader",
-          /* Compiles Sass to CSS */
-        ],
-      },
-    ],
-  },
-  plugins: [
-    /* HTML Webpack plugin, etc. */
-    new MiniCssExtractPlugin({
-      filename: "./styles/[name].css",
-      /* This is the relative path to your distribution folder where 
-      your bundled CSS file will be stored */
-    }),
-  ],
-};
-```
+   ```
+   [build]
+    publish = "dist"
+    command = "npm run build"
+   ```
 
-3. Import your stylesheets into your entry point (namely `index.js`) like this:
+   \[Note]: if your production folder has a different name, type it (within quotes) instead of "dist". Same goes for the build command.
 
-```javascript
-/* index.js */
-import "./styles/main.scss"; // Relative path to src/
-/* some JS code */
-```
+3. Log in to Netlify and go to your dashboard. On the "Sites" section there's a button that reads "Add new site", click on it:
 
-##### Java(Script)s
+   ![Sites section on Netlify's dashboard](./learnings/netlify_dashboard.png)
 
-###### Multiple modules into 1 bundle
+4. You'll see it a dropdown menu with deployment options like this. Click on "Import an existing project":
+   ![Deployment options](./learnings/add_new_site_menu.jpg)
 
-You can combine multiple JavaScript files into 1 entry point by simply importing them into the entry point. Let's say you have the following file structure:
+5. Then you'll have to choose your Git provider, as well as your repository. In the third step you have to enter your build settings, here's how to fill in that form:
 
-```
-  src/
-  |   |- scripts/
-  |         |- script1.js
-  |         |- script2.js
-  |- index.js
-```
+   - **Base directory:** this is the relative path to your root, from the repository folder. In our examples, that's just `./`. However, if you check my repository for this project, you'll see this is a repo for my solutions to the Frontend Mentor challenges, and each challenge has its own folder. That's why to deploy this solution, my base directory was: `./product-preview-card-component/`.
+   - **Build command:** this is the same you specified in your `package.json` and `netlify.toml`, namely: `npm run build`.
+   - **Publish directory:** this is the relative path to your distribution folder from the root of your repository. In our examples: `./dist`. For my project, I used: `./product-preview-card-component/dist`.
 
-Then you can create a single JavaScript script for production, by simply adding this code to your `index.js` file:
+Once you've provided those data, click on "Deploy site" and you're good to go. Good job!
 
-```javascript
-/* index.js */
-import "./scripts/script1";
-import "./scripts/script2";
-```
+[Go back to the Table of contents 🔝](#table-of-contents)
 
-This way, if you run the build command, you'll end up with a single JavaScript file (namely `main.js`) in your distribution folder, which contains the code from all `script1.js`, `script2.js` and `index.js`.
+## Useful Resources
 
-###### Multiple modules into multiple bundles
+- [Webpack official site](https://webpack.js.org/)
+  - **Webpack Guides:**
+  - [Getting started](https://webpack.js.org/guides/getting-started/)
+  - [How to use its live server](https://webpack.js.org/guides/development/#using-webpack-dev-server)
+  - [Handling styles](https://webpack.js.org/loaders/#styling)
+  - [Handling images](https://webpack.js.org/guides/asset-management/#loading-images)
+  - [Mini CSS Extract Plugin](https://webpack.js.org/plugins/mini-css-extract-plugin)
+  - [HTML Webpack plugin](https://github.com/jantimon/html-webpack-plugin#options)
+  - [HTML Webpack plugin](https://github.com/jantimon/html-webpack-plugin#options)
+  - **Relevant lists for Webpack**
+  - [Loaders](https://webpack.js.org/loaders/)
+  - [Plugins](https://webpack.js.org/plugins/)
+- [Babel official site](https://babeljs.io/)
+  - [Babel official installation guide](https://babeljs.io/setup#installation)
+- [PostCSS official site](https://postcss.org/)
+  - [Official list of PostCSS plugins](https://github.com/postcss/postcss/blob/main/docs/plugins.md)
+- [NPM official site](https://www.npmjs.com/): Here you can find the commands to install your packages and get information about which ones have been depracated, how popular they are and the links to their official sites.
+- [Browsersl.ist](https://browsersl.ist/) has guides on how to set your browser support, and shows you the browsers you're supporting with the settings you type in your `.browserslistrc` file.
+- [RegExr](https://regexr.com/) is a tool with guides on how to use regular expressions and it'll help you check if your expressions apply to the text you expect. You can use it to figure out or test the expressions you use in the `rules` of your Webpack settings.
 
-You can achieve this by creating more than 1 entry point. Let's say you have the following file structure:
-
-```
-  src/
-  |   |- scripts/
-  |         |- script1.js
-  |         |- script2.js
-  |         |- script3.js
-  |- index1.js
-  |- index2.js
-```
-
-And you want to create two bundles: one contains the code from `script1.js`, `script2.js` and `index1.js`, and the other contains the code from `script3.js` and `index2.js`. Then, you should use `index1.js` and `index2.js` as the entry points, and import the corresponding modules into each of them. This way:
-
-```javascript
-/* index1.js */
-import "./scripts/script1";
-import "./scripts/script2";
-/* index2.js */
-import "./scripts/script3";
-```
-
-Then, you have to tell Webpack you're using those two entry points. To do that, open your `webpack.config.js` and modify the `module.exports.entry` object:
-
-```javascript
-/* webpack.config.js */
-module.exports = {
-  /* mode */
-  entry: {
-    module1: "./src/index.js", // You can change module1 for whatever name you want
-    module2: "./src/index2.js", // You can change module2 for whatever name you want
-  },
-  /* output, module, plugins */
-};
-```
-
-If you run the build script in your terminal, you'll see the two bundles as `module1.js` and `module2.js` in your distribution folder, with the expected code. As well as their respective script tags in `index.html`.
-
-###### Load scripts in different parts of your code
-
-By default, Webpack refers to your bundles in the `<head>` of your `index.html` and defers their load. This translates into this piece of code:
-
-```html
-<!-- index.html -->
-<head>
-  <script src="./scripts/module1.js" defer></script>
-  <script src="./scripts/module2.js" defer></script>
-  <script src="./scripts/module3.js" defer></script>
-  <script src="./scripts/module4.js" defer></script>
-</head>
-```
-
-Let's say we want to distribute them this way instead:
-
-```html
-<!-- index.html -->
-<head>
-  <script src="./scripts/module1.js" defer></script>
-  <script src="./scripts/module2.js" async></script>
-  <script src="./scripts/module3.js"></script>
-</head>
-<body>
-  <!-- module4.js is the last child of the body element  -->
-  <script src="./scripts/module4.js"></script>
-</body>
-```
-
-To achieve that
-
-- Optimize your code
-- Backwards compatibility
-- Minify your code
-- Preload resources
-- Use different settings for development and production
-- Deployment (on Netlify)
-  Serve the code automatically
-  npm i -D webpack-dev-server
-
-"dev": "webpack --config webpack.config.dev.js",
-"build": "webpack --config webpack.config.prod.js",
-"watch": "webpack --watch --config webpack.config.dev.js",
-"serve": "webpack-dev-server --open --config webpack.config.prod.js"
-
-```
-
-```
+[Go back to the Table of contents 🔝](#table-of-contents)

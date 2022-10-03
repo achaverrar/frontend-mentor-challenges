@@ -1,7 +1,6 @@
 const path = require("path");
 
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CopyPlugin = require("copy-webpack-plugin");
 
 module.exports = {
@@ -67,10 +66,6 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: "./src/index.html",
       filename: "./index.html",
-    }),
-    // Creates CSS bundled file and stores it in dist/
-    new MiniCssExtractPlugin({
-      filename: "./css/[name].css",
     }),
     // Copies images folder from src/ to dist/ so that
     // the HTML template has access to it
