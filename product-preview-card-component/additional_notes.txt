@@ -56,3 +56,6 @@ https://webpack.js.org/guides/asset-management/#loading-images
  npm i -D copy-webpack-plugin
  Background images
 
+          // "style-loader",
+          /* Add exports of a module as style to DOM */
+          /* Not needed if MiniCssExtractPlugin is being used */
