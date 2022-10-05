@@ -21,6 +21,7 @@ This is a solution to the [Product preview card component challenge on Frontend 
   - [Continued development](#continued-development)
   - [Useful resources](#useful-resources)
 - [Author](#author)
+- [Acknowledgments](#acknowledgments)
 
 ## Overview
 
@@ -57,24 +58,101 @@ Users should be able to:
 
 #### Workflow
 
-- For the next project, I'd like to try this workflow better:
+> “Give me six hours to chop down a tree and I will spend the first four sharpening the axe.”
+> —Abraham Lincoln
 
-1. **Set up a boilerplate** of minimum files and folders (package.json, .html, .scss or .css, .js files, images, fonts, .gitignore, etc.)
+My experience with this project has convinced me that Licoln was a smart guy, and I'd like to use his approach for my next project, the following way:
+
+###### Prework
+
+1. **Study the design:** examine what you're going to build, and:
+
+   - Identify the page's high level blocks/divisions
+   - Decide if you're going to use flexbox or grid for each one
+
+2. **Think ahead about semantics:** classify each block on the page as semantic or auxiliary.
+
+   - **Semantic:** define regions that have a meaningful role in the overall content structure.
+   - **Auxiliary:** help build the layout (alignment, position) or store the content that fits no semantic tag.
+
+| Type of block |       Tag       | Common children          |              Common content              |
+| :-----------: | :-------------: | :----------------------- | :--------------------------------------: |
+|   Semantic    |   `<header>`    | `<h1>`, `<img>`          |            headings and logos            |
+|               |     `<nav>`     | `<ul>`,`<li>`            |                                          |
+|               |    `<main>`     | `<section>`, `<article>` |                                          |
+|               |   `<article>`   | `<h1>` to `<h6>`,        |  blog/forum posts, product cards, etc.   |
+|               |                 | `<p>`, `<a>`             |                                          |
+|               | `<blockquotes>` |                          |                                          |
+|               |   `<footer>`    | `<section>`, `<ul>`,     | sitemap, info about autorship, copyright |
+|               |                 | `<a>`, `<img>`           | links to top content, related resources  |
+|               |    `<aside>`    | `<p>`, `<a>`             |                side bars                 |
+| ------------- |                 |                          |                                          |
+|   Auxiliary   |     `<div>`     | `<img>`                  |                                          |
+|               |    `<span>`     |                          |        product/role descriptions         |
+|               |                 |                          |     button texts, if they have icons     |
+|               |  `<ul>`,`<li>`  |                          |     Groups of similar items, such as     |
+|               |                 |                          |     comments, reviews, quotes, links     |
+
+3. Choose a responsive design approach: mobile-first or desktop first.
+
+4. Define the stages of development: what are you going to do first and next, what goals you have for each stage and what the end of each stage looks like. This will help you work on a single thing at a time, without derailing to think
+
+   - This is too much and I don't even know where to begin!!!!
+   - What will I do when I'm done with this component?
+   - I think this is ready, but what if I missing something?
+   - Am I ever going to finish this project?
+   - I think I could improve that, but do I need to?
+     and all that jumping around from one thing to another, just when you thought you were over it.
+
+5. Gather and organize your resources:
+
+   - Text content: get all the text you need in a file, so that you focus on the layout (and not on transcribing) in the development process.
+   - Preoptimized images: in the formats and sizes you need.
+   - Design system: font families, font sizes, color codes, base units for spacing, etc.
+   - Technologies and conventions: identify which ones will be helpful in your project.
+
+6. Prepare your boilerplate: create the minimum set of folders and files you're going to need, organize them, install the necessary packages, set them up and do all you need to get started.
 
    - _\[Optional] Set up [Webpack][webpack_5]. Webpack is a bundler that helps you handle JavaScript modules, but also ease and speed up your work by automating tasks (compiling and optimizing code, making it compatible with a wide range of browsers, making your resources and text responsive, and so much more!)._
    - _\[Optional] Make sure [Webpack][webpack_5] works correctly with your files. Build at every step of the project, to detect and fix errors efficiently._
-     _Take a look at my [Webpack settings](./webpack.config.prod.js), where I added comments on what does what, as well as [my guide to set up Webpack](./additional_notes.txt), which lists the steps I followed to set up [Webpack 5][webpack_5] for my project._
+     _Take a look at [my step by step guide to set up Webpack 5](./guide_webpack_setup.md), which covers all what I did and worked to set up [Webpack 5][webpack_5] for my project, as well as explanations on what all those settings are about, what you really need to get going and why you need it._
 
-2. **Prepare the HTML markup for mobile design**, seize semantic tags, and use `<div>` instead of `<img/>` tags in this stage.
-3. **Add the styles for mobile design**, complete one component at a time, and only add background colors to the `div`s that are replacing the images. Use [PerfectPixel][perfect_pixel] to compare your results with the original design.
-4. **Add the HTML markup for desktop design**, you can comment out the markup that applies to mobile design only, so that it's easier to focus on desktop design now.
-5. **Add the styles for desktop design:** duplicate the styles for mobile design and comment out the copy, modify the styles that aren't commented out, as needed, in order to complete the desktop design, and use media queries to introduce these differences at the right screen size.
-6. **Style the images:** this will be easier once both layouts are well established. Replace the corresponding `<div>` for `<img/>` tags and style them.
-7. **Add functionality with JavaScript:** and take care of whatever is missing in terms of accessibility and basic web optimization.
+###### (Coding) Work
+
+For a mobile-first approach, I'd:
+
+1. **Do all the HTML markup**, but I'd use `<div>` instead of `<img/>` tags in this stage.
+2. **Focus on the styles for mobile**, complete one component at a time, and only add background colors to the `div`s that are replacing the images. Use [PerfectPixel][perfect_pixel] to compare your results with the original design.
+3. **Forget about mobile and focus on desktop only**. I'd duplicate the styles for mobile design and comment out the copy, modify the styles that aren't commented out, as needed, in order to complete the desktop design.
+4. **Use media queries** to introduce the differences between styles at the right screen size.
+5. **Style the images:** this will be easier once both layouts are well established. Replace the corresponding `<div>` for `<img/>` tags and style them.
+6. **Include functionalities using JavaScript**
+7. **Extend accessibility and optimization using JavaScript**
 8. **Polish the final details of web optimization** with [Webpack][webpack_5], for example.
-9. **Comment and document your code**
+9. **Document your project**
 10. **Deploy your project** using Netlify, for example.
-    [Let's go back to the table of contents](#table-of-contents)
+
+###### Post+Work (More Work)
+
+Whenever possible, take some time to reflect on the main takeaways from your project: the things you learned, the challenges you faced, how you solved them and what you could do better next time. You can make of each project a learning experience, and not only in terms of the technologies you use.
+
+[Let's go back to the table of contents](#table-of-contents)
+
+#### Browsers
+
+In general, I feel comfortable using Firefox for development, but I realized Google Chrome is superior in two stages of the process, namely: responsive design and web optimization.
+
+- **Responsive design:** here's a screenshot of Google Chrome's device toolbar:
+
+  ![Device toolbar in Google Chrome](./learnings/device_toolbar.jpg)
+
+  What's special about it are those grey, blue and orange bars:
+
+  - **Grey bar:** each division corresponds to a screen-width (mobile, tablet and laptop).
+  - **Blue bar:** divisions are determined by your max-width breakpoints.
+  - **Orange bar:** divisions are determined by your min-width breakpoints.
+
+- **Web optimization**: Google Chrome has an in-built tool called "Lighthouse" that's perfect to assess the level of optimization of your web page. But it can also give you guides about other aspects like SEO and Accessibility! But that's good enough of an appetizer. All I have to say about it is in [this section](#web-optimization).
 
 #### Structure
 
@@ -155,7 +233,17 @@ If you have a mixin in `sass/base/_mixins.scss` that you want to use in `sass/pa
 
 Notice that the `_index.scss` files are only used to forward/export partials.
 
-- **CSS Grid gives you more control than Flexbox over children's dimensions:** if you have a box and you want to set the sizes (widths/heights) of its children elements, this is what it looks like using:
+- **There might be no point in using CSS Grid/Flexbox when the layout has arbitrarily sized gutters**.
+
+---
+
+|                  When using CSS Grid/Flexbox is ideal                  |                  When you can do without CSS Grid/Flexbox                   |
+| :--------------------------------------------------------------------: | :-------------------------------------------------------------------------: |
+| ![Layout with equally sized gutters](./learnings/balanced-gutters.png) | ![Layout with arbitrarily sized gutters](./learnings/arbitrary-gutters.png) |
+
+---
+
+- **CSS Grid gives the parent more control than Flexbox over its children's dimensions:** if you have a box and you want to set the sizes (widths/heights) of its children elements, this is what it looks like using:
 - Flexbox:
 
 ```css
@@ -334,7 +422,9 @@ image.addEventListener("error", function () {
 And that's it.
 
 Now, in case you're thinking about leaving the alt text blank, using JavaScript, I must warn you that I noticed something really weird when one does that, at least in Firefox:
+
 ![Firefox bug when alt text is empty](./learnings/firefox_bug.png)
+
 The fix I found was making `alt=" "`, at least.
 
 - **Make prices accessible:** I encourage you to listen to the prices section using NDVA, but if you can't simply close your eyes and imagine you want to know how much the perfum is and you hear "149.99 dollars, 169.99 dollars", and then, you wonder if there is a bug with your screen reader, maybe it skipped to another perfum? Maybe you accidentally added another article and the price increased? Is it a discount?
@@ -412,7 +502,7 @@ See the difference for yourself:
 
 #### Web Optimization
 
-Once you have a fully working web page, the next goal is to have a **performant web page**, and [Webpack][webpack] and Lighthouse will be your best allies in the process.
+Once you have a fully working web page, the next goal is to have a **performant web page**, and [Webpack][webpack_5] and Lighthouse will be your best allies in the process.
 
 If you've never heard of Lighthouse, it's an in-built tool in Google Chrome. You can find it among the developer's tools (press F12, or right click on any web page in the browser, and then left click on "Inspect"), and then click on the button with this icon: ">>". A dropdown menu will show up, and "Lighthouse" will be among the options. Click on it, like so:
 
@@ -460,17 +550,35 @@ Maybe that new feature you're so excited to use in your project isn't supported 
 
 Therefore, if your target audience includes those people, try to make your code compatible with those browsers. It's not that hard, I promise. For CSS, you can use the autoprefixer plugin of PostCSS and for JavaScript, you can use Babel. Once again, Webpack does all of it automatically for you, once you've set it up.
 
-I encourage you to check my [settings](./webpack.config.prod.js) where I added comments on what does what, and [my guide to set up Webpack](./additional_notes.txt) which is what worked for me, using Webpack5.
+I encourage you to check [my guide to set up Webpack 5](./guide_webpack_setup.md) where I added explanations on what does what, what you really need and why you need it, as well as some additional resources to dive deeper on the topic.
 
 [Let's go back to the table of contents](#table-of-contents)
 
 #### The most important learning of all
 
-Even though this was a simple component, this was a long journey for me. When I started, I didn't have a workflow defined, nor did I know anything about Sass, Webpack, Font loading strategies, Lighthouse, Markdown... And I know I didn't need to use all of that, but I decided to use this project as a learning experience. Leaving the complexity for the concepts and technologies and not on the design surely made it more manageable for me. I think I learned a lot from this project, and I learned as much as I wanted, I got as far as I allowed myself to and from that, I learned two things:
+Even though this was a simple component, this was a long journey for me. When I started, I didn't have a workflow defined, nor did I know anything about Sass, Webpack, Font loading strategies, Lighthouse, Markdown... And I know I didn't need to use all of that, but I decided to use this project as a learning experience.
 
-- Always do your best: and that doesn't always equals work hard. Sometimes, the best you can do is step back from a task, and try do what you can do for the day. Maybe it is to ask for help. Sometimes, what you can do is remember you're human and be patient yourself and the process. Take care of yourself and remember tomorrow is another day, try to make your tomorrow easier, and hold the belief that if you keep showing up every day, working on what you can, you'll get the job done.
+Leaving the complexity to the concepts and technologies and not on the design surely made it more manageable for me. I think I learned a lot from this project, and I learned as much as I wanted, I got as far as I allowed myself to and here are the main takeaways from my journey, which might not be related to coding at all:
 
-- Every project is a learning oportunity.
+- **Plan ahead**, it seems like that's too much time not working, and it's true, because it makes coding easier and saves you tons of time and headaches.
+
+- **Commit, commit, commit**, not only it is a good practice but also a life saver when something goes wrong.
+
+- **Document as you go**, documenting is a boring task for us who prefer the excitement of coding and learning, but it's important and has to be done. So, taking notes of the important stuff as you go and then connecting those notes will be easier than trying to remember everything at the end, to pull off the whole README from scratch. Bookmark relevant links, too.
+
+- **Measure your progress:** because only that way you can have an objective perspective of your work and your skills. Projects are tied to deadlines, and knowing how fast you can achieve some goals is key, because only then you know what's feasable for you and what expectations are realistic. Knowing your level of proficiency will help you know when to ask for help and how much you're improving in your journey.
+
+- **Some things will take some time**. Sometimes you just want to finish a task, but you're stuck and you spend a lot of time debugging and it doesn't work, and minutes become hours, and it just doesn't work, and you're even thinking of staying up all night, because it's just this one little tiny thing that's missing. Don't.
+
+I've learned some things take some time, time to clear your head, so that you can finally see the bug that's in front of you, time to wrap your head around a new concept, time to get help, time to come up with an idea... You have to do your best. But you must know that banging your head against the keyboard for hours and staying all night while you stare at StackOverflow isn't doing your best.
+
+Sometimes, the best you can do is to step back from what you're doing, remember you're human and be gentle with yourself.
+
+**Doing your best means making the best possible use of your time**, within your realm of possibilities, so you must know what's possible for you at the moment and among those things, choose what you can do best.
+
+If this task isn't working right now, go do something that does: maybe that's working on something else until you get some help, or maybe that's just taking notes of the resources you can consult later (when your mind is clearer), shutting down your computer, taking care of your mind and body, and trying again tomorrow.
+
+Because some things take some time, you shouldn't give up, but instead have faith in yourself and the process, and keep showing up, every new day, keep trying and doing your best, because only that way you'll accomplish your goals. I know you will, and I hope so do you.
 
 ### Continued development
 
@@ -482,22 +590,58 @@ Even though this was a simple component, this was a long journey for me. When I 
 
 ### Useful resources
 
-[webpack_5]: https://webpack.js.org
-[sass]: https://sass-lang.com
-[babel]: https://babeljs.io/
-[postcss]: https://postcss.org/
-[perfect_pixel]: https://chrome.google.com/webstore/detail/perfectpixel-by-welldonec/dkaagdgjmgdmbnecmcefdhjekcoceebi
-[7_in_1]: https://kiranworkspace.com/sass-architecture/
-[css_filters]: https://developer.mozilla.org/en-US/docs/Web/CSS/filter
-[picture]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/picture
-[s_tag]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/s
-[accessible_focus]: https://dockyard.com/blog/2020/04/28/designing-for-accessibility-focus-states
-[serp_snippet]: https://www.highervisibility.com/seo/tools/serp-snippet-optimizer/
-[nvda]: https://www.nvaccess.org/download/
-[fonts_helper]: http://google-webfonts-helper.herokuapp.com/fonts
-[font_loading_strategies]: https://www.zachleat.com/web/css-tricks-web-fonts/
+Here's a list of the reources that I mentioned in this README:
+
+- Technologies:
+
+  - [Webpack][webpack_5]
+  - [Sass][sass]
+  - [Babel][babel]
+  - [PostCSS][postcss]
+
+- Tools
+
+  - [NVDA][nvda]
+  - [Perfect Pixel][perfect_pixel]
+  - [SERP Snippet Optimizer][serp_snippet]
+  - [Google Webfonts Helper][fonts_helper]
+
+- Articles
+
+  - [SASS 7 in 1 Architecture Pattern by Kiran Workspace][7_in_1]
+  - [CSS filters by MDN][css_filters]
+  - [Picture tag by MDN][picture]
+  - [s tag by MDN][s_tag]
+  - [Designing for Accessibility: Focus States by DockYard][accessible_focus]
+  - [Developing a Robust Font Loading Strategy for CSS-Tricks by Zach Leatherman][font_loading_strategies]
+
+- And some tutorials I recommend:
+
+  - ["Stop using @import with Sass | @use and @forward explained"](https://youtu.be/CR-a8upNjJ0) by Kevin Powell, that helped me understand Sass modules better.
+  - [Figma File to Code. The Designer to Developer Handoff w/ Frontend Mentor Founder [HTML+CSS Tutorial]](https://youtu.be/PY_iIeAKFw0). This is the first part of one of Zero to Mastery workshops, by the founder of Frontend Mentor, Matt Studdert, himself. It helped me organize my workflow better.
+  - [How to Make a Landing Page using HTML, SCSS, and JavaScript - Full Course](https://youtu.be/aoQ6S1a32j8), one of FreeCodeCamp turorials, explained by Jessica Chan (Coder Coder). This helped me seize Sass mixins and maps to handle my breakpoints.
+  - And, of course, my own [guide to set up Webpack 5 for your (HTML, Sass/CSS and JavaScript) project](./guide_webpack_setup.md), where I gather and summarize all I learned about setting up Webpack 5.
 
 ## Author
 
 - Github - [@achaverrar](https://github.com/achaverrar)
 - Frontend Mentor - [@achaverrar](https://www.frontendmentor.io/profile/achaverrar)
+
+## Acknowledgments
+
+I'm very grateful with [Matt Pegg](https://www.youtube.com/channel/UCfLsWcGtbMntd4z1DmzCmlg/featured) for answering my questions about how to takle the development process and introducing me to Lighthouse.
+
+[webpack_5]: https://webpack.js.org
+[sass]: https://sass-lang.com
+[babel]: https://babeljs.io/
+[postcss]: https://postcss.org/
+[nvda]: https://www.nvaccess.org/download/
+[perfect_pixel]: https://chrome.google.com/webstore/detail/perfectpixel-by-welldonec/dkaagdgjmgdmbnecmcefdhjekcoceebi
+[serp_snippet]: https://www.highervisibility.com/seo/tools/serp-snippet-optimizer/
+[fonts_helper]: http://google-webfonts-helper.herokuapp.com/fonts
+[7_in_1]: https://kiranworkspace.com/sass-architecture/
+[css_filters]: https://developer.mozilla.org/en-US/docs/Web/CSS/filter
+[picture]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/picture
+[s_tag]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/s
+[accessible_focus]: https://dockyard.com/blog/2020/04/28/designing-for-accessibility-focus-states
+[font_loading_strategies]: https://www.zachleat.com/web/css-tricks-web-fonts/
