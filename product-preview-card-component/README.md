@@ -17,7 +17,7 @@ This is a solution to the [Product preview card component challenge on Frontend 
     - [SEO](#seo)
     - [Accessibility](#accessibility)
     - [Web Optimization](#web-optimization)
-    - [The most important learning of all](#the-most-important-learning-of-all)
+    - [The most important learnings of all](#the-most-important-learnings-of-all)
   - [Continued development](#continued-development)
   - [Useful resources](#useful-resources)
 - [Author](#author)
@@ -554,7 +554,7 @@ I encourage you to check [my guide to set up Webpack 5](./guide_webpack_setup.md
 
 [Let's go back to the table of contents](#table-of-contents)
 
-#### The most important learning of all
+#### The most important learnings of all
 
 Even though this was a simple component, this was a long journey for me. When I started, I didn't have a workflow defined, nor did I know anything about Sass, Webpack, Font loading strategies, Lighthouse, Markdown... And I know I didn't need to use all of that, but I decided to use this project as a learning experience.
 
@@ -630,6 +630,8 @@ Here's a list of the reources that I mentioned in this README:
 ## Acknowledgments
 
 I'm very grateful with [Matt Pegg](https://www.youtube.com/channel/UCfLsWcGtbMntd4z1DmzCmlg/featured) for answering my questions about how to takle the development process and introducing me to Lighthouse.
+
+I'd also like to thank my mom and my friends: Alex, Juan Manuel and Tania, who were with me at every step of the process, encouraging and comforting me, having faith in me. You didn't help me debug my code, but I wouldn't have been able to make it without you, you taught me the most important learnings of all.
 
 [webpack_5]: https://webpack.js.org
 [sass]: https://sass-lang.com
